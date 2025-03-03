@@ -14,7 +14,7 @@ import ana from "./ana.jpg";
 import vanttec from "./vanttec.jpg";
 import grupoSSC from "./grupoSSC.png";
 import ansysInc from "./ansysInc.jpg";
-import alwayssunny from "./allwayssunny.png";
+import alwayssunny from "./allwayssuny_negro.png";
 import mercalabs from "./mercalabs.png"
 import mecalabs from "./mecalabs.png";
 
