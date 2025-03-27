@@ -41,19 +41,19 @@ const cardsData = [
   },
   {
     img: drone,
-    title: "Drone",
+    title: "SWARM",
     desc: "Its main focus is on making solutions based on autonomous dones, such as package delivery and participating in competitions.",
     canvasType: 'drone',
   },
   {
     img: boat,
-    title: "Boat",
+    title: "USV",
     desc: "Develops an autonomous boat for RoboBoat competitions, focusing on control, navigation, and object recognition.",
     canvasType: 'boat',
   },
   {
     img: submarine,
-    title: "Submarine",
+    title: "UUV",
     desc: "Creates an autonomous submarine for RoboSub, tackling underwater tasks in global competitions.",
     canvasType:'submarine',
   },  
