@@ -109,7 +109,7 @@ const Projects = () => {
             </p>
             <div className="w-[100px] h-[48px] rounded-[10px] bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500 flex justify-center items-center p-[2px] hover:shadow-lg hover:shadow-purple-600/30">
               <Link
-                to={cardsData.find(card => card.canvasType === selectedCanvas)?.title}
+                to={cardsData.find(card => card.canvasType === selectedCanvas)?.page}
                 rel="noopener noreferrer"
                 className="text-white h-full w-full flex items-center justify-center rounded-[10px] bg-primary"
               >
