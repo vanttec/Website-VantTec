@@ -21,7 +21,6 @@ const CarouselItem = ({ image, height, isHoverable, isPressable, objectFit }) =>
         e.stopPropagation(); // Prevent any unwanted propagation
     };
 
-
     return (
         <div
             className={`px-2 ${isPressable ? 'cursor-pointer' : 'cursor-default'}`} // Change cursor style
@@ -34,7 +33,10 @@ const CarouselItem = ({ image, height, isHoverable, isPressable, objectFit }) =>
                 style={{ height }}
                 radius={"sm"}
             >
-                <CardHeader className="absolute z-10 top-1 flex-col items-start">
+                {/* Gradient that improves text readability*/}
+                <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-black/70 to-transparent z-10"></div>
+
+                <CardHeader className="absolute z-20 top-1 flex-col items-start">
                     {image.label && (
                         <p className="text-tiny text-white/60 uppercase font-bold">
                             {image.label}
