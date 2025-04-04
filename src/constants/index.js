@@ -137,7 +137,7 @@ export const accordion_info_boat = [
 export const carrousel1drone = [
   {
     src: "team/roboboat.jpg",
-    alt: "Roboboat 2024",
+    alt: "Ready for the Challenge",
   },
   {
     src: "team/group.jpg",
@@ -145,34 +145,34 @@ export const carrousel1drone = [
   },
   {
     src: "team/competencia.jpg",
-    alt: "Representing Mexico"
+    alt: "Fostering Teamwork and Collaboration"
   }
 ]
 
 export const carrousel2drone = [
   {
     src: "drone/drone_pic1.jpg",
-    alt: "Drone Meeting",
+    alt: "Striving for Excellence",
   },
   {
     src:"drone/drone_pic4.jpg",
-    alt: "Drone Meeting",
+    alt: "Tinkering with Technology",
   },
   {
     src:"drone/drone_pic6.jpg",
-    alt: "Drone"
+    alt: "Creativity in Action",
   }, 
   {
     src: "drone/drone_pic7.jpg",
-    alt: "Drone"
+    alt: "Bringing Ideas to Life",
   },
   {
     src:"drone/drone_pic8.jpg",
-    alt: "Drone"
+    alt: "Collaborative Spirit",
   },
   {
     src:"drone/drone_pic5.jpg",
-    alt: "Drone Team"
+    alt: "Where Innovation Meets Passion",
   }
 ]
 
@@ -240,7 +240,7 @@ export const carrousel2submarine = [
 export const home_aboutus_images = [
   {
     src: "team/roboboat.jpg",
-    alt: "Roboboat 2024",
+    alt: "Ready for the Challenge",
   },
   {
     src: "team/group.jpg",
@@ -248,7 +248,7 @@ export const home_aboutus_images = [
   },
   {
     src: "team/competencia.jpg",
-    alt: "Representing Mexico"
+    alt: "Fostering Teamwork and Collaboration"
   }
 ]
 
@@ -308,7 +308,7 @@ export const awards_us_images = [
   },
   {
     src: "team/competencia.jpg",
-    alt: "Making Friends"
+    alt: "Engineering at its peak"
   },
   {
     src: "team/2019.jpg",
