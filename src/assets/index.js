@@ -21,6 +21,14 @@ import Paper1 from "./Paper1.png";
 import Paper2 from "./Paper2.png";
 import Paper3 from "./Paper3.png";
 import Paper4 from "./Paper4.png";
+import Paper5 from "./Paper5.png";
+import Paper6 from "./Paper6.png";
+import Paper7 from "./Paper7.png";
+import Paper8 from "./Paper8.png";
+import Paper9 from "./Paper9.png";
+import Paper10 from "./Paper10.png";
+import Paper11 from "./Paper11.png";
+import Paper12 from "./Paper12.png";
 
 
 
@@ -48,5 +56,13 @@ export {
   Paper2,
   Paper3,
   Paper4,
+  Paper5,
+  Paper6,
+  Paper7,
+  Paper8,
+  Paper9,
+  Paper10,
+  Paper11,
+  Paper12,
   mecalabs
 };

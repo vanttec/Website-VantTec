@@ -10,7 +10,7 @@ import {
 } from 'ogl'
 
 
-import { Paper1, Paper2, Paper3, Paper4 } from '../../assets'
+import { Paper1, Paper2, Paper3, Paper4, Paper5, Paper6, Paper7, Paper8, Paper9, Paper10, Paper11, Paper12  } from '../../assets'
  
 
 function debounce(func, wait) {
@@ -332,18 +332,18 @@ class App {
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
     const defaultItems = [
-      { image: Paper1, text: 'Adaptive dynamic programming ' },
-      { image: Paper2, text: 'Desk Setup' },
-      { image: Paper3, text: 'Waterfall' },
-      { image: Paper4, text: 'Strawberries' },
-      { image: `https://picsum.photos/seed/5/800/600?grayscale`, text: 'Deep Diving' },
-      { image: `https://picsum.photos/seed/16/800/600?grayscale`, text: 'Train Track' },
-      { image: `https://picsum.photos/seed/17/800/600?grayscale`, text: 'Santorini' },
-      { image: `https://picsum.photos/seed/8/800/600?grayscale`, text: 'Blurry Lights' },
-      { image: `https://picsum.photos/seed/9/800/600?grayscale`, text: 'New York' },
-      { image: `https://picsum.photos/seed/10/800/600?grayscale`, text: 'Good Boy' },
-      { image: `https://picsum.photos/seed/21/800/600?grayscale`, text: 'Coastline' },
-      { image: `https://picsum.photos/seed/12/800/600?grayscale`, text: "Palm Trees" }
+      { image: Paper1, text: 'Finite-time control for an Unmanned Surface Vehicle' },
+      { image: Paper2, text: 'Adaptive dynamic programming ' },
+      { image: Paper3, text: 'Guidance and Control Based on Adaptive Sliding'},
+      { image: Paper4, text: 'Adaptive Integral Terminal Sliding Mode Control ' },
+      { image: Paper5, text: 'A Real-Time NMPC Guidance Law ' },
+      { image: Paper6, text: 'Robust Visual Tracking Control Based on Adaptive Sliding Mode ' },
+      { image: Paper7, text: 'Control of an Unmanned Surface Vehicle' },
+      { image: Paper8, text: 'USV Path-Following Control' },
+      { image: Paper9, text: 'A 3D Vision Based Obstacle Avoidance Methodology' },
+      { image: Paper10, text: 'Control of a Double Thruster Twin-Hull ' },
+      { image: Paper11, text: 'Modeling, identification and control' },
+      { image: Paper12, text: "Data Augmentation in Deep Learning-Based" }
     ]
     const galleryItems = items && items.length ? items : defaultItems
     this.mediasImages = galleryItems.concat(galleryItems)
