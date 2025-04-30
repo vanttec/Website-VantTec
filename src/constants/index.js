@@ -29,6 +29,10 @@ export const navLinks = [
   {
     id:"sponsors",
     title: "Sponsors"
+  },
+  {
+    id:"contactus",
+    title: "Contact Us"
   }
 ];
 

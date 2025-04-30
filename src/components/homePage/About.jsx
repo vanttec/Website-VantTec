@@ -4,7 +4,7 @@ import {home_aboutus_images, home_about_us_companies_images} from "../../constan
 import { Trophy, Users, FileText, Award } from 'lucide-react';
 import Carousel from "../shared/Carousel.jsx";
 import arrow from "../../assets/arrow.svg";
-
+import DecryptedText from '../shared/DecryptedText.jsx';
 
 const BigStats = () => {
 
@@ -137,15 +137,14 @@ const About = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="flex flex-col justify-center"
-                    >
-                        <h1 className="text-4xl md:text-3xl tracking-tight mb-4">
-                            About Us
-                        </h1>
-                        <p className="text-xl text-gray-300 font-light mb-6 leading-relaxed">
-                            Pioneering autonomous vehicle technology with innovation, research, and passion.
-                            We're not just building vehicles; we're shaping the future of transportation.
-                        </p>
+                        className="flex flex-col justify-center">
+                        <div className="text-4xl md:text-3xl tracking-tight mb-4">
+                        <DecryptedText text="About Us!" animateOn="view" revealDirection="center" speed={200}/>
+                        </div>
+                        <div className="text-xl text-gray-300 font-light mb-6 leading-relaxed">
+                        <DecryptedText text=" Pioneering autonomous vehicle technology with innovation, research, and passion. We're not just building vehicles; we're shaping the future of transportation." 
+                        animateOn="view" revealDirection="center" speed={200}/>
+                        </div>
 
                         <BigStats />
                     </motion.div>

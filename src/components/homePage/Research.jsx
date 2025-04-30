@@ -1,7 +1,7 @@
 import React from 'react'; // Import React for component creation
 import { images } from '../../constants/index.js'; // Import image data from constants file
 import Carousel from '../shared/Carousel.jsx'; // Import the custom Carousel component
-
+import CircularGallery from '../shared/CircularGallery.jsx';
 /**
  * Research Component
  * Displays a carousel of research publication images
@@ -18,21 +18,13 @@ const Research = () => {
             <h2 className="text-2xl text-white font-thin mb-6 text-center">
                 Research Publications on Unmanned Surface Vehicles
             </h2>
+            
+            <div style={{ height: '600px', position: 'relative' }}>
+                  <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} />
+            </div>
 
             {/* Carousel component with custom configuration */}
-            <Carousel
-                images={images} // Pass the array of research paper images
-                height="550px" // Set a fixed height for carousel items
-                slidesToShow={3} // Show 3 slides at once on large screens
-                autoplay={true}
-                autoplaySpeed={3000}
-                speed={400}
-                slidesToScroll={1}
-                isHoverable={true}
-                isPressable={true}
-                objectFit={true}
-                arrows={true}
-            />
+        
         </div>
         </section>
         </>

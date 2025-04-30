@@ -17,6 +17,13 @@ import ansysInc from "./ansysInc.jpg";
 import alwayssunny from "./allwayssuny_negro.png";
 import mercalabs from "./mercalabs.png"
 import mecalabs from "./mecalabs.png";
+import Paper1 from "./Paper1.png";
+import Paper2 from "./Paper2.png";
+import Paper3 from "./Paper3.png";
+import Paper4 from "./Paper4.png";
+
+
+
 
 export {
   logo,
@@ -37,5 +44,9 @@ export {
   ansysInc, 
   mercalabs,
   alwayssunny,
+  Paper1,
+  Paper2,
+  Paper3,
+  Paper4,
   mecalabs
 };

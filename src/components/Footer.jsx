@@ -9,15 +9,9 @@ const Footer = () => {
             <div className='h-fit flex sm:flex-row flex-col bg-black text-white'> {/* Apply text-white here */}
                 <div className='sm:w-3/5 w-full flex flex-row p-8'>
                     <div className="w-1/2">
-                        <p className='font-bold text-lg'>Contact</p>
-                        <dl className=''>
-                            <dt>Tecnologico de Monterrey</dt>
-                            <dd>+52 81 0000 0000</dd>
-                        </dl>
-
                         <p className='font-bold text-lg mt-4'>Address</p>
                         <dl className=''>
-                            <dt>México, Nuevo León, Monterrey</dt>
+                            <dt>México, Nuevo León, Monterrey, Instituto Tecnológico de Estudios Superiores</dt>
                             <dd>Av. Eugenio Garza Sada 2501 Sur, Tecnológico, 64700</dd>
                         </dl>
                     </div>

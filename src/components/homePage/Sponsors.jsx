@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ansysInc, grupoSSC, mercalabs, alwayssunny, mecalabs } from "../../assets";
+import BounceCards from "../shared/BouceCards";
 
 const SponsorCard = ({ name, logo }) => {
   const [showText, setShowText] = useState(false);
@@ -7,6 +8,7 @@ const SponsorCard = ({ name, logo }) => {
   const handleClick = () => {
     setShowText(!showText);
   };
+
 
   return (
     <div
@@ -38,28 +40,40 @@ const SponsorCard = ({ name, logo }) => {
 };
 
 const Sponsors = () => {
+
+  const my_images = [
+    ansysInc,
+    grupoSSC,
+    mercalabs,
+    alwayssunny
+  ];
+  
+  const transformStyles = [
+    "rotate(5deg) translate(-150px)",
+    "rotate(0deg) translate(-70px)",
+    "rotate(-5deg)",
+    "rotate(5deg) translate(70px)",
+    "rotate(-5deg) translate(150px)"
+  ];
+
   return (
     <>
       <section id="sponsors">
         <div className="flex flex-col">
           <h2 className="text-2xl text-white font-thin mb-6 text-center">Sponsors</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {/* Consistent sizing for all SponsorCard components */}
-            <div className="flex justify-center items-center">
-              <SponsorCard name="Grupo SSC" logo={grupoSSC} />
-            </div>
-            <div className="flex justify-center items-center">
-              <SponsorCard name="AnsysInc" logo={ansysInc} />
-            </div>
-            <div className="flex justify-center items-center">
-              <SponsorCard name="Merca Labs" logo={mecalabs} />
-            </div>
-            <div className="flex justify-center items-center">
-              <SponsorCard name="Always Sunny" logo={alwayssunny} />
-            </div>
+            <BounceCards
+              className="custom-bounceCards mx-auto"
+              images={my_images}
+              containerWidth={500}
+              containerHeight={250}
+              animationDelay={1}
+              animationStagger={0.08}
+              easeType="elastic.out(1, 0.5)"
+              transformStyles={transformStyles}
+              enableHover={true}
+            />
           </div>
-        </div>
-      </section>
+        </section>
     </>
   );
 };
