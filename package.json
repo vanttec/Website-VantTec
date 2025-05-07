@@ -5,7 +5,7 @@
   "homepage": "https://vanttec.com/",
   "type": "module",
   "scripts": {
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && echo www.vanttec.com > dist/CNAME",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
