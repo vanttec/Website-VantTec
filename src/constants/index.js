@@ -7,6 +7,22 @@ import {
   maria,
   pedro,
   ana,
+  Paper1,
+  Paper2,
+  Paper3,
+  Paper4,
+  Paper5,
+  Paper6,
+  Paper7,
+  Paper8,
+  Paper9,
+  Paper10,
+  Paper11,
+  Paper12,
+  ansysInc,
+  grupoSSC,
+  mercalabs,
+  alwayssunny,
 } from "../assets";
 
 export const navLinks = [
@@ -488,4 +504,53 @@ export const tabsDataDrone = [
     content:
       "We continue to refine the drone's capabilities for various challenges, and its performance in competitions demonstrates the team's ability to tackle real-world applications. The P.A.T.O.S. drone remains a testament to innovation, versatility, and the dedication of our members, advancing through key milestones and further enhancing its practical capabilities."
   }
+];
+
+export const InfiniteMenuItems = [
+{
+  image: sdv,
+  link: "/SDV",
+  title: 'SDV',
+  description: 'A 100% electric vehicle with level 3 autonomy. With advanced control algorithms and a sensor system integration.'
+  },
+  {
+    image: drone,
+    link: "/Drone",
+    title: 'SWARM & UAV',
+    description: 'Its main focus is on making solutions based on autonomous dones, such as package delivery and participating in competitions.'
+  },
+  {
+    image: boat, 
+    link: '/Boat',
+    title: 'USV',
+    description: 'Develops an autonomous boat for RoboBoat competitions, focusing on control, navigation, and object recognition.'
+  },
+  {
+    image:   submarine,
+    link: '/Submarine',
+    title: 'UUV',
+    description: 'Creates an autonomous submarine for RoboSub, tackling underwater tasks in global competitions.'
+  }
+];
+
+export const researchPapers = [
+  { image: Paper1, text: "Finite-time control for an Unmanned Surface Vehicle", link: "https://google.com" },
+  { image: Paper2, text: "Adaptive dynamic programming", link: "https://google.com" },
+  { image: Paper3, text: "Guidance and Control Based on Adaptive Sliding", link: "https://google.com" },
+  { image: Paper4, text: "Adaptive Integral Terminal Sliding Mode Control", link: "https://google.com" },
+  { image: Paper5, text: "A Real-Time NMPC Guidance Law", link: "https://google.com" },
+  { image: Paper6, text: "Robust Visual Tracking Control", link: "https://google.com" },
+  { image: Paper7, text: "Control of an Unmanned Surface Vehicle", link: "https://google.com" },
+  { image: Paper8, text: "USV Path-Following Control", link: "https://google.com" },
+  { image: Paper9, text: "A 3D Vision Based Obstacle Avoidance", link: "https://google.com" },
+  { image: Paper10, text: "Control of a Double Thruster Twin-Hull USV", link: "https://google.com" },
+  { image: Paper11, text: "Modeling, Identification and Control", link: "https://google.com" },
+  { image: Paper12, text: "Data Augmentation in Deep Learning-Based Obstacle Detection", link: "https://google.com" }
+];
+
+export const sponsorCards = [
+  { src: ansysInc,   link: "https://ansys.com"    },
+  { src: grupoSSC,   link: "https://www.grupossc.com"},
+  { src: mercalabs,  link: "https://mecalabs.carrd.co"},
+  { src: alwayssunny,link: "https://www.allwayssunny.com"}
 ];

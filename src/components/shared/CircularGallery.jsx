@@ -8,10 +8,7 @@ import {
   Program,
   Texture,
 } from 'ogl'
-
-
-import { Paper1, Paper2, Paper3, Paper4, Paper5, Paper6, Paper7, Paper8, Paper9, Paper10, Paper11, Paper12  } from '../../assets'
- 
+import { researchPapers } from '../../constants/'
 
 function debounce(func, wait) {
   let timeout
@@ -34,24 +31,45 @@ function autoBind(instance) {
   })
 }
 
-function createTextTexture(gl, text, font = "bold 30px monospace", color = "black") {
-  const canvas = document.createElement("canvas")
-  const context = canvas.getContext("2d")
-  context.font = font
-  const metrics = context.measureText(text)
-  const textWidth = Math.ceil(metrics.width)
-  const textHeight = Math.ceil(parseInt(font, 10) * 1.2)
-  canvas.width = textWidth + 20
-  canvas.height = textHeight + 20
-  context.font = font
-  context.fillStyle = color
-  context.textBaseline = "middle"
-  context.textAlign = "center"
-  context.clearRect(0, 0, canvas.width, canvas.height)
-  context.fillText(text, canvas.width / 2, canvas.height / 2)
-  const texture = new Texture(gl, { generateMipmaps: false })
-  texture.image = canvas
-  return { texture, width: canvas.width, height: canvas.height }
+function createTextTexture(gl, text, font = "bold 30px monospace", color = "black", maxWidth = 300) {
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
+  context.font = font;
+
+  const words = text.split(" ");
+  const lines = [];
+  let currentLine = words[0];
+
+  for (let i = 1; i < words.length; i++) {
+    const testLine = currentLine + " " + words[i];
+    const metrics = context.measureText(testLine);
+    if (metrics.width > maxWidth) {
+      lines.push(currentLine);
+      currentLine = words[i];
+    } else {
+      currentLine = testLine;
+    }
+  }
+  lines.push(currentLine);
+
+  const textHeight = Math.ceil(parseInt(font, 10) * 1.2);
+  canvas.width = maxWidth + 20;
+  canvas.height = textHeight * lines.length + 20;
+
+  context.font = font;
+  context.fillStyle = color;
+  context.textBaseline = "middle";
+  context.textAlign = "center";
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  lines.forEach((line, index) => {
+    context.fillText(line, canvas.width / 2, textHeight * (index + 0.5) + 10);
+  });
+
+  const texture = new Texture(gl, { generateMipmaps: false });
+  texture.image = canvas;
+
+  return { texture, width: canvas.width, height: canvas.height };
 }
 
 class Title {
@@ -70,9 +88,10 @@ class Title {
       this.gl,
       this.text,
       this.font,
-      this.textColor
-    )
-    const geometry = new Plane(this.gl)
+      this.textColor,
+      this.plane.scale.x * 450
+    );
+    const geometry = new Plane(this.gl);
     const program = new Program(this.gl, {
       vertex: `
         attribute vec3 position;
@@ -96,15 +115,18 @@ class Title {
         }
       `,
       uniforms: { tMap: { value: texture } },
-      transparent: true
-    })
-    this.mesh = new Mesh(this.gl, { geometry, program })
-    const aspect = width / height
-    const textHeight = this.plane.scale.y * 0.15
-    const textWidth = textHeight * aspect
-    this.mesh.scale.set(textWidth, textHeight, 1)
-    this.mesh.position.y = -this.plane.scale.y * 0.5 - textHeight * 0.5 - 0.05
-    this.mesh.setParent(this.plane)
+      transparent: true,
+    });
+    this.mesh = new Mesh(this.gl, { geometry, program });
+
+    const aspect = width / height;
+    const textHeight = this.plane.scale.y * 0.15;
+    const textWidth = textHeight * aspect;
+
+    this.mesh.scale.set(textWidth, textHeight, 1);
+
+    this.mesh.position.y = -this.plane.scale.y * 0.5 - textHeight * 0.5 - 0.05;
+    this.mesh.setParent(this.plane);
   }
 }
 
@@ -174,7 +196,6 @@ class Media {
         uniform float uBorderRadius;
         varying vec2 vUv;
         
-        // Rounded box SDF for UV space
         float roundedBoxSDF(vec2 p, vec2 b, float r) {
           vec2 d = abs(p) - b;
           return length(max(d, vec2(0.0))) + min(max(d.x, d.y), 0.0) - r;
@@ -191,7 +212,6 @@ class Media {
           );
           vec4 color = texture2D(tMap, uv);
           
-          // Apply rounded corners (assumes vUv in [0,1])
           float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
           if(d > 0.0) {
             discard;
@@ -296,7 +316,7 @@ class Media {
 }
 
 class App {
-  constructor(container, { items, bend, textColor = "#ffffff", borderRadius = 0, font = "bold 30px DM Sans" } = {}) {
+  constructor(container, { items, bend, textColor = "#ffffff", borderRadius = 0, font = "bold 30px DM Sans", onActiveChange } = {}) {
     document.documentElement.classList.remove('no-js')
     this.container = container
     this.scroll = { ease: 0.05, current: 0, target: 0, last: 0 }
@@ -307,6 +327,7 @@ class App {
     this.onResize()
     this.createGeometry()
     this.createMedias(items, bend, textColor, borderRadius, font)
+    this.onActiveChange = onActiveChange
     this.update()
     this.addEventListeners()
   }
@@ -331,21 +352,7 @@ class App {
     })
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
-    const defaultItems = [
-      { image: Paper1, text: 'Finite-time control for an Unmanned Surface Vehicle' },
-      { image: Paper2, text: 'Adaptive dynamic programming ' },
-      { image: Paper3, text: 'Guidance and Control Based on Adaptive Sliding'},
-      { image: Paper4, text: 'Adaptive Integral Terminal Sliding Mode Control ' },
-      { image: Paper5, text: 'A Real-Time NMPC Guidance Law ' },
-      { image: Paper6, text: 'Robust Visual Tracking Control Based on Adaptive Sliding Mode ' },
-      { image: Paper7, text: 'Control of an Unmanned Surface Vehicle' },
-      { image: Paper8, text: 'USV Path-Following Control' },
-      { image: Paper9, text: 'A 3D Vision Based Obstacle Avoidance Methodology' },
-      { image: Paper10, text: 'Control of a Double Thruster Twin-Hull ' },
-      { image: Paper11, text: 'Modeling, identification and control' },
-      { image: Paper12, text: "Data Augmentation in Deep Learning-Based" }
-    ]
-    const galleryItems = items && items.length ? items : defaultItems
+    const galleryItems = items && items.length ? items : researchPapers
     this.mediasImages = galleryItems.concat(galleryItems)
     this.medias = this.mediasImages.map((data, index) => {
       return new Media({
@@ -391,6 +398,12 @@ class App {
     const itemIndex = Math.round(Math.abs(this.scroll.target) / width)
     const item = width * itemIndex
     this.scroll.target = this.scroll.target < 0 ? -item : item
+
+    const activeIndex = Math.round(Math.abs(this.scroll.current) / this.width)
+    if (activeIndex !== this.lastActive) {
+      this.lastActive = activeIndex
+      this.onActiveChange?.(activeIndex)
+    }
   }
   onResize() {
     this.screen = {
@@ -459,20 +472,28 @@ class App {
 }
 
 export default function CircularGallery({
-  items,
   bend = 3,
   textColor = "#ffffff",
   borderRadius = 0.05,
   font = "bold 30px DM Sans"
 }) {
   const containerRef = useRef(null)
+
   useEffect(() => {
-    const app = new App(containerRef.current, { items, bend, textColor, borderRadius, font })
-    return () => {
-      app.destroy()
-    }
-  }, [items, bend, textColor, borderRadius, font])
+        const app = new App(containerRef.current, {
+      items: researchPapers,
+      bend,
+      textColor,
+      borderRadius,
+      font
+    })
+    return () => app.destroy()
+  }, [bend, textColor, borderRadius, font])
+
   return (
-    <div className='w-full h-full overflow-hidden cursor-grab active:cursor-grabbing' ref={containerRef} />
+    <div
+      ref={containerRef}
+      className="relative w-full h-full cursor-grab active:cursor-grabbing"
+    />
   )
 }

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { mat4, quat, vec2, vec3 } from 'gl-matrix';
+import { InfiniteMenuItems } from '../../constants';
+import { useNavigate } from 'react-router-dom';
 
 const discVertShaderSource = `#version 300 es
 
@@ -869,7 +871,8 @@ const defaultItems = [
   },
 ];
 
-export default function InfiniteMenu({ items = [] }) {
+export default function InfiniteMenu() {
+  const navigate = useNavigate();
   const canvasRef = useRef(null);
   const [activeItem, setActiveItem] = useState(null);
   const [isMoving, setIsMoving] = useState(false);
@@ -879,14 +882,14 @@ export default function InfiniteMenu({ items = [] }) {
     let sketch;
 
     const handleActiveItem = (index) => {
-      const itemIndex = index % items.length;
-      setActiveItem(items[itemIndex]);
+      const itemIndex = index % InfiniteMenuItems.length;
+      setActiveItem(InfiniteMenuItems[itemIndex]);
     };
 
     if (canvas) {
       sketch = new InfiniteGridMenu(
         canvas,
-        items.length ? items : defaultItems,
+        InfiniteMenuItems.length ? InfiniteMenuItems : defaultItems,
         handleActiveItem,
         setIsMoving,
         (sk) => sk.run()
@@ -905,7 +908,7 @@ export default function InfiniteMenu({ items = [] }) {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [items]);
+  }, [InfiniteMenuItems]);
 
   const handleButtonClick = () => {
     if (!activeItem?.link) return;
@@ -913,6 +916,7 @@ export default function InfiniteMenu({ items = [] }) {
       window.open(activeItem.link, '_blank');
     } else {
       console.log('Internal route:', activeItem.link);
+      navigate(activeItem.link);
     }
   };
 
@@ -929,11 +933,13 @@ export default function InfiniteMenu({ items = [] }) {
           {/* Title */}
           <h2
             className={`
+          text-white
           select-none
           absolute
           font-black
+          max-w-[5ch]
           [font-size:4rem]
-          left-[1.6em]
+          left-[1.2em]
           top-1/2
           transform
           translate-x-[20%]
@@ -953,6 +959,7 @@ export default function InfiniteMenu({ items = [] }) {
           <p
             className={`
           select-none
+          text-white
           absolute
           max-w-[10ch]
           text-[1.5rem]

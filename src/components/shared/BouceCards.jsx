@@ -1,35 +1,32 @@
 import { useEffect } from "react";
 import { gsap } from "gsap";
+import { sponsorCards } from "../../constants";
 
 export default function BounceCards({
   className = "",
-  images = [],
+  data = sponsorCards,
   containerWidth = 400,
   containerHeight = 400,
   animationDelay = 0.5,
   animationStagger = 0.06,
   easeType = "elastic.out(1, 0.8)",
-  transformStyles = [
-    "rotate(10deg) translate(-170px)",
-    "rotate(5deg) translate(-85px)",
-    "rotate(-3deg)",
-    "rotate(-10deg) translate(85px)",
-    "rotate(2deg) translate(170px)",
-  ],
+  transformStyles = [],
   enableHover = false,
 }) {
   useEffect(() => {
     gsap.fromTo(
       ".card",
       { scale: 0 },
-      {
-        scale: 1,
-        stagger: animationStagger,
-        ease: easeType,
-        delay: animationDelay,
-      }
+      { scale: 1, stagger: animationStagger, ease: easeType, delay: animationDelay }
     );
   }, [animationDelay, animationStagger, easeType]);
+
+  const handleClick = (idx) => {
+    const { link } = data[idx] || {};
+    if (!link) return;
+    if (link.startsWith("http")) window.open(link, "_blank");
+    else window.location.href = link;
+  };
 
   const getNoRotationTransform = (transformStr) => {
     const hasRotate = /rotate\([\s\S]*?\)/.test(transformStr);
@@ -59,7 +56,7 @@ export default function BounceCards({
   const pushSiblings = (hoveredIdx) => {
     if (!enableHover) return;
 
-    images.forEach((_, i) => {
+    data.forEach((_, i) => {
       const selector = `.card-${i}`;
       gsap.killTweensOf(selector);
 
@@ -94,7 +91,7 @@ export default function BounceCards({
   const resetSiblings = () => {
     if (!enableHover) return;
 
-    images.forEach((_, i) => {
+    data.forEach((_, i) => {
       const selector = `.card-${i}`;
       gsap.killTweensOf(selector);
 
@@ -111,27 +108,18 @@ export default function BounceCards({
   return (
     <div
       className={`relative flex items-center justify-center ${className}`}
-      style={{
-        width: containerWidth,
-        height: containerHeight,
-      }}
+      style={{ width: containerWidth, height: containerHeight }}
     >
-      {images.map((src, idx) => (
+      {data.map(({ src }, idx) => (
         <div
           key={idx}
-          className={`card card-${idx} absolute w-[200px] aspect-square border-8 border-white rounded-[30px] overflow-hidden`}
-          style={{
-            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
-            transform: transformStyles[idx] || "none",
-          }}
-          onMouseEnter={() => pushSiblings(idx)}
-          onMouseLeave={resetSiblings}
+          className={`card card-${idx} absolute w-[200px] aspect-square border-8 border-white rounded-[30px] overflow-hidden cursor-pointer`}
+          style={{ transform: transformStyles[idx] || "none" }}
+          onMouseEnter={() => enableHover && pushSiblings(idx)}
+          onMouseLeave={() => enableHover && resetSiblings()}
+          onClick={() => handleClick(idx)}
         >
-          <img
-            className="w-full h-full object-cover"
-            src={src}
-            alt={`card-${idx}`}
-          />
+          <img className="w-full h-full object-contain object-center" src={src} alt={`card-${idx}`} />
         </div>
       ))}
     </div>
