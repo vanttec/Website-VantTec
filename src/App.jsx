@@ -26,26 +26,26 @@ const App = () => {
     {
       image: sdv,
       link: "/Submarine",
-      title: 'Item 1',
-      description: 'This is pretty cool, right?'
+      title: 'SDV',
+      description: 'Automotive excellence meets self-driving technology.'
      },
       {
         image: drone,
         link: "/Drone",
-        title: 'Item 2',
-        description: 'This is pretty cool, right?'
+        title: 'SWARM & UAV',
+        description: "Coordinated flight, unparalleled precision."
       },
       {
         image: boat, 
         link: '/Drone',
-        title: 'Item 3',
-        description: 'This is pretty cool, right?'
+        title: 'USV',
+        description: 'Ready for the most unforgiving waters.'
       },
       {
         image:   submarine,
         link: '/Drone',
-        title: 'Item 4',
-        description: 'This is pretty cool, right?'
+        title: 'UUV',
+        description: 'Conquer the greatest depths with style and SUB-stance.'
       }
     ];
 
