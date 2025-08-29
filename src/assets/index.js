@@ -4,7 +4,7 @@ import close from "./close.svg";
 import arrow from "./arrow.svg";
 import sdv from "./sdv.png";
 import drone from "./swarm.png";
-import boat from "./usv.png";
+import boat from "./boat.jpg";
 import submarine from "./uuv.png";
 import videoBG from "./videoBG.mp4";
 import juanito from "./juanito.jpg";
