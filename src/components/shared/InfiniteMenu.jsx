@@ -931,6 +931,7 @@ export default function InfiniteMenu({ items = [] }) {
             className={`
           select-none
           absolute
+          max-w-[10ch]
           font-black
           [font-size:4rem]
           left-[1.6em]
@@ -940,6 +941,7 @@ export default function InfiniteMenu({ items = [] }) {
           -translate-y-1/2
           transition-all
           ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
+          text-white
           ${isMoving
                 ? 'opacity-0 pointer-events-none duration-[100ms]'
                 : 'opacity-100 pointer-events-auto duration-[500ms]'
@@ -960,6 +962,8 @@ export default function InfiniteMenu({ items = [] }) {
           right-[1%]
           transition-all
           ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
+          text-white
+          font-bold
           ${isMoving
                 ? 'opacity-0 pointer-events-none duration-[100ms] translate-x-[-60%] -translate-y-1/2'
                 : 'opacity-100 pointer-events-auto duration-[500ms] translate-x-[-90%] -translate-y-1/2'

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import {
   Renderer,
   Camera,
@@ -142,7 +142,7 @@ class Media {
     this.font = font
     this.createShader()
     this.createMesh()
-    this.createTitle()
+    //this.createTitle()
     this.onResize()
   }
   createShader() {
@@ -296,19 +296,21 @@ class Media {
 }
 
 class App {
-  constructor(container, { items, bend, textColor = "#ffffff", borderRadius = 0, font = "bold 30px DM Sans" } = {}) {
+  constructor(container, options, onCenterChange) {
     document.documentElement.classList.remove('no-js')
     this.container = container
     this.scroll = { ease: 0.05, current: 0, target: 0, last: 0 }
-    this.onCheckDebounce = debounce(this.onCheck, 200)
+    this.onCenterChange = onCenterChange;
+    this.onCheckDebounce = debounce(this.onCheck, 200);
     this.createRenderer()
     this.createCamera()
     this.createScene()
     this.onResize()
     this.createGeometry()
-    this.createMedias(items, bend, textColor, borderRadius, font)
+    this.createMedias(options.items, options.bend, options.textColor, options.borderRadius, options.font)
     this.update()
     this.addEventListeners()
+    this.onCheck()
   }
   createRenderer() {
     this.renderer = new Renderer({ alpha: true })
@@ -381,16 +383,27 @@ class App {
     this.isDown = false
     this.onCheck()
   }
-  onWheel() {
-    this.scroll.target += 2
-    this.onCheckDebounce()
+  onWheel(e) {
+    // Only respond to horizontal scroll
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      e.preventDefault() // Prevent browser navigation
+      this.scroll.target += e.deltaX * 0.1 // adjust sensitivity as needed
+      this.onCheckDebounce()
+    }
   }
   onCheck() {
-    if (!this.medias || !this.medias[0]) return
-    const width = this.medias[0].width
-    const itemIndex = Math.round(Math.abs(this.scroll.target) / width)
-    const item = width * itemIndex
-    this.scroll.target = this.scroll.target < 0 ? -item : item
+    // Snap to item
+    if (!this.medias || !this.medias[0]) return;
+    const width = this.medias[0].width;
+    const itemIndex = Math.round(Math.abs(this.scroll.target) / width);
+    const item = width * itemIndex;
+    this.scroll.target = this.scroll.target < 0 ? -item : item;
+
+    // Notify React of the center item
+    if (this.onCenterChange) {
+      const centerIndex = itemIndex % this.medias.length;
+      this.onCenterChange(centerIndex, this.medias[centerIndex].text);
+    }
   }
   onResize() {
     this.screen = {
@@ -432,8 +445,7 @@ class App {
     this.boundOnTouchMove = this.onTouchMove.bind(this)
     this.boundOnTouchUp = this.onTouchUp.bind(this)
     window.addEventListener('resize', this.boundOnResize)
-    window.addEventListener('mousewheel', this.boundOnWheel)
-    window.addEventListener('wheel', this.boundOnWheel)
+    this.container.addEventListener('wheel', this.boundOnWheel)
     window.addEventListener('mousedown', this.boundOnTouchDown)
     window.addEventListener('mousemove', this.boundOnTouchMove)
     window.addEventListener('mouseup', this.boundOnTouchUp)
@@ -466,13 +478,39 @@ export default function CircularGallery({
   font = "bold 30px DM Sans"
 }) {
   const containerRef = useRef(null)
+  const [popupText, setPopupText] = useState(null)
+
   useEffect(() => {
-    const app = new App(containerRef.current, { items, bend, textColor, borderRadius, font })
+    const handleCenterChange = (index, text) => {
+      setPopupText(text)
+    }
+    const app = new App(containerRef.current, { items, bend, textColor, borderRadius, font }, handleCenterChange)
     return () => {
       app.destroy()
     }
   }, [items, bend, textColor, borderRadius, font])
+
   return (
-    <div className='w-full h-full overflow-hidden cursor-grab active:cursor-grabbing' ref={containerRef} />
+    <div className='w-full h-full overflow-hidden cursor-grab active:cursor-grabbing' ref={containerRef}>
+      {popupText && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '20px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: 'rgba(0,0,0,0.8)',
+            color: '#fff',
+            font: '20px sans-serif',
+            padding: '1em 2em',
+            borderRadius: '8px',
+            zIndex: 10,
+            pointerEvents: 'none'
+          }}
+        >
+          {popupText}
+        </div>
+      )}
+    </div>
   )
 }
