@@ -17,6 +17,7 @@ import ansysInc from "./ansysInc.jpg";
 import alwayssunny from "./allwayssuny_negro.png";
 import mercalabs from "./mercalabs.png"
 import mecalabs from "./mecalabs.png";
+import CIMA_Hero_img from "./CIMA_Hero_img.png";
 import Paper1 from "./Paper1.png";
 import Paper2 from "./Paper2.png";
 import Paper3 from "./Paper3.png";
@@ -64,5 +65,6 @@ export {
   Paper10,
   Paper11,
   Paper12,
-  mecalabs
+  mecalabs,
+  CIMA_Hero_img
 };
