@@ -1,0 +1,10 @@
+.rdrStaticRanges,
+.rdrDefinedRangesWrapper,
+.rdrSidebar {
+  display: none !important;
+}
+
+.rdrDay, .rdrDayNumber, .rdrDayDisabled {
+  pointer-events: none !important;
+  cursor: default !important;
+}

@@ -7,6 +7,7 @@ import SubmarineProject from "./projectsPage/SubmarineProject";
 import SDVProject from "./projectsPage/SDVProject";
 import InfiniteMenu from "./components/shared/InfiniteMenu";
 import ContactUs from "./components/homePage/ContactUs";
+import CalculoDeFecha from "./components/cimaPage/Calculadora";
 
 import {
   sdv,
@@ -81,6 +82,7 @@ const App = () => {
               <Sponsors />
               <ContactUs />
               <Footer />
+              <CalculoDeFecha />
             </div>
           }
         />
