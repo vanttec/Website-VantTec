@@ -1,3 +1,39 @@
+:root {
+  --cal-primary: #00ff37;
+  --cal-bg: #f6f6f9;    
+  --cal-text: #222222;  
+}
+
+.rdrCalendarWrapper,
+.rdrMonths,
+.rdrMonth,
+.rdrCalendar,
+.rdrDateRangeWrapper {
+  background-color: var(--cal-bg) !important;
+  color: var(--cal-text) !important;
+}
+
+.rdrMonth {
+  background-color: transparent !important; 
+}
+
+.rdrDayNumber,
+.rdrWeekDay,
+.rdrMonthName,
+.rdrNextPrevButton {
+  color: var(--cal-text) !important;
+}
+
+.rdrDayInRange,
+.rdrDaySelected,
+.rdrDayStart,
+.rdrDayEnd,
+.rdrDayStartPreview,
+.rdrDayEndPreview {
+  background: var(--cal-primary) !important;
+  color: #fff !important;
+}
+
 .rdrStaticRanges,
 .rdrDefinedRangesWrapper,
 .rdrSidebar {
@@ -7,4 +43,93 @@
 .rdrDay, .rdrDayNumber, .rdrDayDisabled {
   pointer-events: none !important;
   cursor: default !important;
+}
+
+
+
+body {
+  background-color: #fff7f5;
+  font-family: "Nunito", sans-serif;
+}
+
+.calculadora-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem;
+  color: #6d6875;
+}
+
+.titulo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #9b84d2;
+  margin-bottom: 1rem;
+}
+
+.descripcion {
+  max-width: 700px;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.inputs-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-box label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.input-fecha,
+.input-numero {
+  background-color: #fff;
+  border: 2px solid #f5b3a8;
+  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0px 2px 4px rgba(255, 150, 130, 0.2);
+  transition: all 0.2s ease;
+}
+
+.input-fecha:hover,
+.input-numero:hover {
+  border-color: #b197fc;
+}
+
+.boton-calcular {
+  background-color: #ffa9a3;
+  border: none;
+  border-radius: 15px;
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #5a4b4b;
+  cursor: pointer;
+  box-shadow: 0px 3px 6px rgba(255, 100, 90, 0.25);
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.boton-calcular:hover {
+  background-color: #ffbdb8;
+}
+
+.nota {
+  font-size: 0.9rem;
+  margin-top: 2rem;
+  color: #6d6875;
 }

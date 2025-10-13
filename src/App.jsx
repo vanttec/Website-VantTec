@@ -82,7 +82,6 @@ const App = () => {
               <Sponsors />
               <ContactUs />
               <Footer />
-              <CalculoDeFecha />
             </div>
           }
         />

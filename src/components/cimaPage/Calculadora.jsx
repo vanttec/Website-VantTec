@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { createRoot } from "react-dom/client";
 import { DateRangePicker } from "react-date-range";
 import es from "date-fns/locale/es";
 import "react-date-range/dist/styles.css";
@@ -8,77 +7,90 @@ import "./Calculadora.css";
 
 const Calculadora = () => {
   const [fechaInicial, setFechaInicial] = useState("");
-  const [rangoDias, setRangoDias] = useState(0);
-  const [cicloDias, setCicloDias] = useState(0);
+  const [rangoDias, setRangoDias] = useState(5);
+  const [cicloDias, setCicloDias] = useState(21);
 
- 
-  let startDate = fechaInicial ? new Date(fechaInicial) : new Date();
-  startDate = new Date(startDate.getTime() + cicloDias * 24 * 60 * 60 * 1000);
-  let endDate = new Date(startDate.getTime() + rangoDias * 24 * 60 * 60 * 1000);
+  const computeRange = (f, r, c) => {
+    let start = f ? new Date(f) : new Date();
+    start = new Date(start.getTime() + c * 24 * 60 * 60 * 1000);
+    let end = new Date(start.getTime() + r * 24 * 60 * 60 * 1000);
+    return [{ startDate: start, endDate: end, key: "selection" }];
+  };
 
-  const range = [
-    {
-      startDate,
-      endDate,
-      key: "selection",
-    },
-  ];
+
+  const [displayRange, setDisplayRange] = useState(() =>
+    computeRange(fechaInicial, rangoDias, cicloDias)
+  );
 
   return (
-  <section className="flex flex-col items-center justify-center min-h-[60vh] p-8 text-center">
-    <h2 className="text-3xl font-nunito font-bold text-[#6D6875] mb-4">Calculadora Menstrual</h2>
-    <p className="text-lg max-w-2xl text-[#6D6875] mb-6">
-      La menstruación llega normalmente una vez al mes (cada 28-30 días), pero para muchas mujeres no es una ciencia exacta. Con esta calculadora puedes estimar de forma aproximada la fecha de tu próximo periodo. Solo ingresa algunos datos de tu ciclo y obten una predicción personalizada.
-    </p>
-    {/* Componente de la calculadora menstrual pendiente */}
-    <div className="apartado">
-      <h2 className="text-[#6D6875]">Llena la información</h2>
-      <div className="text-[#6D6875]">
-        <label className="text-[#6D6875]">
-          Fecha inicial:
+    <section className="calculadora-container">
+      <h2 className="titulo">Calculadora Menstrual C. I. M. A.</h2>
+
+      <p className="descripcion">
+        La menstruación llega normalmente una vez al mes (cada 28-30 días), pero
+        para muchas mujeres no es una ciencia exacta. Con esta calculadora
+        puedes estimar de forma aproximada la fecha de tu próximo periodo. Solo
+        ingresa algunos datos de tu ciclo y obtén una predicción personalizada.
+      </p>
+
+      <div className="inputs-container">
+        <div className="input-box">
+          <label>¿Cuándo inició tu último periodo?</label>
           <input
             type="date"
             value={fechaInicial}
-            onChange={e => setFechaInicial(e.target.value)}
+            onChange={(e) => setFechaInicial(e.target.value)}
             className="input-fecha"
           />
-        </label>
-        <label>
-          Rango de días:
+        </div>
+
+        <div className="input-box">
+          <label>¿Cuánto dura tu periodo normalmente?</label>
           <input
             type="number"
             value={rangoDias}
-            onChange={e => setRangoDias(Number(e.target.value))}
-            className="input-fecha"
-            min={0}
+            onChange={(e) => setRangoDias(Number(e.target.value))}
+            className="input-numero"
+            min={1}
           />
-        </label>
-        <label>
-          Ciclo de días:
+        </div>
+
+        <div className="input-box">
+          <label>¿Cuánto dura tu ciclo?</label>
           <input
             type="number"
             value={cicloDias}
-            onChange={e => setCicloDias(Number(e.target.value))}
-            className="input-fecha"
-            min={0}
+            onChange={(e) => setCicloDias(Number(e.target.value))}
+            className="input-numero"
+            min={1}
           />
-        </label>
+        </div>
       </div>
-      
+
+      <button
+        className="boton-calcular"
+        onClick={() => {
+          setDisplayRange(computeRange(fechaInicial, rangoDias, cicloDias));
+        }}
+      >
+        Calcula tu próximo periodo
+      </button>
+
       <DateRangePicker
         editableDateInputs={false}
         moveRangeOnFirstSelection={false}
-        ranges={range}
+        ranges={displayRange}
         locale={es}
-        staticRanges={[]}    
+        staticRanges={[]}
         inputRanges={[]}
+        color="#6D6875"
+        onChange={() => {}} // opcional: evita que el usuario cambie la selección por interacción
       />
 
-      <p className="rat">
-        Rango resaltado: {startDate.toLocaleDateString()} - {endDate.toLocaleDateString()}
+      <p className="nota">
+        Nota: Esta estimación no sustituye la orientación médica profesional.
       </p>
-    </div>
-  </section>
+    </section>
   );
 };
 
