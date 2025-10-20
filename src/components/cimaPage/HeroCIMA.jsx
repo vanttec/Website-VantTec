@@ -1,13 +1,18 @@
 import { CIMA_Hero_img } from '../../assets';
 
 const HeroCIMA = () => (
-    <section className="relative flex items-center min-h-[100vh] bg-gradient-to-r from-pink-50 to-pink-100 overflow-hidden">
+    <section className="relative flex items-center min-h-[100vh] overflow-hidden">
         {/* Left side - Text content */}
         <div className="relative z-10 w-1/2 pl-24 py-16">
-            <h1 className="text-[56px] font-bold m-0 font-nunito text-gray-800 tracking-wide leading-tight mb-8">
-                C. I. M. A.
-            </h1>
-            <p className="text-[32px] mb-10 max-w-2xl text-gray-700 leading-relaxed font-semibold">
+            <div className='mb-6'>
+                <h1 className="text-[56px] font-bold m-0 font-nunito text-gray-800 tracking-wide leading-tight">
+                    C. I. M. A.
+                </h1>
+                <p className='text-[20px] mb-10 max-w-2xl text-[#6D6875] leading-relaxed font-semibold'>
+                    Campaña Informativa de Menstruación y Autocuidado
+                </p>
+            </div>
+            <p className="text-[28px] mb-10 max-w-xl text-[#6D6875] leading-relaxed font-semibold">
                 Con apoyo de la tecnología, transformamos la educación menstrual en una experiencia interactiva que empodera y cuida tu bienestar.
             </p>
 
