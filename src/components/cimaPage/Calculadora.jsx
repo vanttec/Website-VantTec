@@ -7,8 +7,8 @@ import "./Calculadora.css";
 
 const Calculadora = () => {
   const [fechaInicial, setFechaInicial] = useState("");
-  const [rangoDias, setRangoDias] = useState(5);
-  const [cicloDias, setCicloDias] = useState(21);
+  const [rangoDias, setRangoDias] = useState(0);
+  const [cicloDias, setCicloDias] = useState(0);
 
   const computeRange = (f, r, c) => {
     let start = f ? new Date(f) : new Date();
@@ -34,38 +34,55 @@ const Calculadora = () => {
       </p>
 
       <div className="inputs-container">
-        <div className="input-box">
-          <label>¿Cuándo inició tu último periodo?</label>
-          <input
-            type="date"
-            value={fechaInicial}
-            onChange={(e) => setFechaInicial(e.target.value)}
-            className="input-fecha"
-          />
-        </div>
+  <div className="input-box">
+    <label>¿Cuándo inició tu último <br />periodo?</label>
+    <div className="input-wrapper">
+      <input
+        type="date"
+        value={fechaInicial}
+        onChange={(e) => setFechaInicial(e.target.value)}
+        className="input-fecha"
+      />
+    </div>
+  </div>
 
-        <div className="input-box">
-          <label>¿Cuánto dura tu periodo normalmente?</label>
-          <input
-            type="number"
-            value={rangoDias}
-            onChange={(e) => setRangoDias(Number(e.target.value))}
-            className="input-numero"
-            min={1}
-          />
-        </div>
+  <div className="input-box">
+  <label>¿Cuánto dura tu periodo <br />normalmente?</label>
+  <div className="input-wrapper">
+    <select
+      value={rangoDias}
+      onChange={(e) => setRangoDias(Number(e.target.value))}
+      className="input-numero"
+    >
+      {[...Array(10)].map((_, i) => (
+        <option key={i + 1} value={i + 1}>
+          {i + 1}
+        </option>
+      ))}
+    </select>
+  </div>
+</div>
 
-        <div className="input-box">
-          <label>¿Cuánto dura tu ciclo?</label>
-          <input
-            type="number"
-            value={cicloDias}
-            onChange={(e) => setCicloDias(Number(e.target.value))}
-            className="input-numero"
-            min={1}
-          />
-        </div>
-      </div>
+<div className="input-box">
+  <label>¿Cuánto dura tu ciclo?</label>
+  <div className="input-wrapper">
+    <select
+      value={cicloDias}
+      onChange={(e) => setCicloDias(Number(e.target.value))}
+      className="input-numero"
+    >
+      {[...Array(40)].map((_, i) => (
+        <option key={i + 10} value={i + 10}>
+          {i + 10}
+        </option>
+      ))}
+    </select>
+
+  </div>
+</div>
+
+</div>
+
 
       <button
         className="boton-calcular"
@@ -76,16 +93,19 @@ const Calculadora = () => {
         Calcula tu próximo periodo
       </button>
 
-      <DateRangePicker
-        editableDateInputs={false}
-        moveRangeOnFirstSelection={false}
-        ranges={displayRange}
-        locale={es}
-        staticRanges={[]}
-        inputRanges={[]}
-        color="#6D6875"
-        onChange={() => {}} // opcional: evita que el usuario cambie la selección por interacción
-      />
+            
+            <DateRangePicker
+              editableDateInputs={false}
+              moveRangeOnFirstSelection={false}
+              ranges={displayRange}
+              locale={es}
+              staticRanges={[]}
+              inputRanges={[]}
+              color="#6D6875"
+              onChange={() => {}}
+              showDateDisplay={false}
+            />
+     
 
       <p className="nota">
         Nota: Esta estimación no sustituye la orientación médica profesional.
