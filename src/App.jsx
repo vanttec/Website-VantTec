@@ -1,12 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 
-import { About, Projects, Hero, Navbar, Research, Awards, Sponsors, Footer } from "./components";
+import { About, Projects, Navbar, Research, Awards, Sponsors, Footer } from "./components";
 import BoatProject from "./projectsPage/BoatProject"; // Adjust path based on your folder structure
 import DroneProject from "./projectsPage/DroneProject";
 import SubmarineProject from "./projectsPage/SubmarineProject";
 import SDVProject from "./projectsPage/SDVProject";
 import InfiniteMenu from "./components/shared/InfiniteMenu";
 import ContactUs from "./components/homePage/ContactUs";
+import FooterCIMA from "./components/cimaPage/FooterCIMA";
 
 import {
   sdv,
@@ -18,7 +19,12 @@ import {
   pedro,
   ana,
 } from "./assets";
- 
+import HeroCIMA from "./components/cimaPage/HeroCIMA";
+import AboutCIMA from "./components/cimaPage/AboutCIMA";
+import Calculadora from "./components/cimaPage/Calculadora";
+import MitosRealidades from "./components/cimaPage/MitosRealidades";
+import Project from "./components/cimaPage/Project";
+
 
 const App = () => {
 
@@ -28,26 +34,26 @@ const App = () => {
       link: "/Submarine",
       title: 'SDV',
       description: 'Automotive excellence meets self-driving technology.'
-     },
-      {
-        image: drone,
-        link: "/Drone",
-        title: 'SWARM & UAV',
-        description: "Coordinated flight, unparalleled precision."
-      },
-      {
-        image: boat, 
-        link: '/Drone',
-        title: 'USV',
-        description: 'Ready for the most unforgiving waters.'
-      },
-      {
-        image:   submarine,
-        link: '/Drone',
-        title: 'UUV',
-        description: 'Conquer the greatest depths with style and SUB-stance.'
-      }
-    ];
+    },
+    {
+      image: drone,
+      link: "/Drone",
+      title: 'SWARM & UAV',
+      description: "Coordinated flight, unparalleled precision."
+    },
+    {
+      image: boat,
+      link: '/Drone',
+      title: 'USV',
+      description: 'Ready for the most unforgiving waters.'
+    },
+    {
+      image: submarine,
+      link: '/Drone',
+      title: 'UUV',
+      description: 'Conquer the greatest depths with style and SUB-stance.'
+    }
+  ];
 
   return (
     <div className="relative z-0 bg-black">
@@ -66,19 +72,16 @@ const App = () => {
                     h-[calc(var(--vh)*100)] /* perfect 100% of visible height on mobile */
                   "
                 >
-                  <InfiniteMenu items={items}/>
+                  <InfiniteMenu items={items} />
                 </div>
               </div>
               <About />
               <Projects />
               <Awards />
               <Research />
-
               <Sponsors />
               <ContactUs />
               <Footer />
-
-              
             </div>
           }
         />
@@ -123,6 +126,22 @@ const App = () => {
               <Navbar />
               <SDVProject />
               <Footer />
+            </div>
+          }
+        />
+        <Route
+          path="/CIMA"
+          element={
+            <div className="bg-[#F8EDE8]">
+              <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
+                <Navbar background={"bg-primary"} />
+              </div>
+              <HeroCIMA />
+              <AboutCIMA />
+              <Calculadora />
+              <MitosRealidades />
+              <Project />
+              <FooterCIMA />
             </div>
           }
         />
