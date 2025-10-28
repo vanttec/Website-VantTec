@@ -1,0 +1,46 @@
+{
+    "mitos": [
+        {
+            "id": 1,
+            "mito": "No puedes hacer ejercicio durante la menstruación.",
+            "esVerdad": false,
+            "explicacion": "Falso, el ejercicio ayuda a disminuir cólicos.",
+            "detalles": "El ejercicio regular puede reducir los síntomas menstruales y mejorar el estado de ánimo."
+        },
+        {
+            "id": 2,
+            "mito": "La menstruación dura exactamente 28 días.",
+            "esVerdad": false,
+            "explicacion": "Falso, puede variar entre 21 y 35 días.",
+            "detalles": "Cada mujer tiene un ciclo único y puede cambiar por diversos factores."
+        },
+        {
+            "id": 3,
+            "mito": "Es normal tener cólicos muy intensos.",
+            "esVerdad": false,
+            "explicacion": "Falso, el dolor extremo puede indicar problemas.",
+            "detalles": "Si el dolor interfiere con actividades diarias, es recomendable consultar a un médico."
+        },
+        {
+            "id": 4,
+            "mito": "La higiene menstrual es importante para la salud.",
+            "esVerdad": true,
+            "explicacion": "Verdad, previene infecciones y molestias.",
+            "detalles": "Cambiar productos menstruales regularmente es esencial para mantener una buena salud."
+        },
+        {
+            "id": 5,
+            "mito": "No puedes nadar durante tu período.",
+            "esVerdad": false,
+            "explicacion": "Falso, puedes nadar usando tampones o copas.",
+            "detalles": "La presión del agua evita que la sangre salga mientras nadas."
+        },
+        {
+            "id": 6,
+            "mito": "El síndrome premenstrual afecta el estado de ánimo.",
+            "esVerdad": true,
+            "explicacion": "Verdad, los cambios hormonales pueden afectar las emociones.",
+            "detalles": "Es normal experimentar cambios de humor debido a las fluctuaciones hormonales."
+        }
+    ]
+}

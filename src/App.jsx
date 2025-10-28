@@ -8,6 +8,7 @@ import SDVProject from "./projectsPage/SDVProject";
 import InfiniteMenu from "./components/shared/InfiniteMenu";
 import ContactUs from "./components/homePage/ContactUs";
 import CalculoDeFecha from "./components/cimaPage/Calculadora";
+import FooterCIMA from "./components/cimaPage/FooterCIMA";
 
 import {
   sdv,
@@ -134,14 +135,14 @@ const App = () => {
           element={
             <div className="bg-[#F8EDE8]">
               <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-                <Navbar />
+                <Navbar background={"bg-primary"} />
               </div>
               <HeroCIMA />
               <AboutCIMA />
               <Calculadora />
               <MitosRealidades />
               <Project />
-              <Footer />
+              <FooterCIMA />
             </div>
           }
         />
