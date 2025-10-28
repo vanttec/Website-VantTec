@@ -17,11 +17,11 @@ const Calculadora = () => {
     return [{ startDate: start, endDate: end, key: "selection" }];
   };
 
-
   const [displayRange, setDisplayRange] = useState(() =>
     computeRange(fechaInicial, rangoDias, cicloDias)
   );
 
+  const [mostrarCalendario, setMostrarCalendario] = useState(false);
   return (
     <section className="calculadora-container">
       <h2 className="titulo">Calculadora Menstrual C. I. M. A.</h2>
@@ -88,24 +88,39 @@ const Calculadora = () => {
         className="boton-calcular"
         onClick={() => {
           setDisplayRange(computeRange(fechaInicial, rangoDias, cicloDias));
+          if (!mostrarCalendario) setMostrarCalendario(true);
         }}
       >
         Calcula tu próximo periodo
       </button>
 
-            
-            <DateRangePicker
-              editableDateInputs={false}
-              moveRangeOnFirstSelection={false}
-              ranges={displayRange}
-              locale={es}
-              staticRanges={[]}
-              inputRanges={[]}
-              color="#6D6875"
-              onChange={() => {}}
-              showDateDisplay={false}
-            />
-     
+      {mostrarCalendario && (
+        <div>
+          <DateRangePicker
+            editableDateInputs={false}
+            moveRangeOnFirstSelection={false}
+            ranges={displayRange}
+            locale={es}
+            staticRanges={[]}
+            inputRanges={[]}
+            color="#6D6875"
+            onChange={(ranges) => {
+              // update displayRange when user selects new range
+              if (ranges.selection) setDisplayRange([ranges.selection]);
+            }}
+            showDateDisplay={false}
+          />
+          <div className="mt-2">
+            <button
+              className="boton-calcular"
+              onClick={() => setMostrarCalendario(false)}
+              aria-label="Cerrar selector de fechas"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      )}
 
       <p className="nota">
         Nota: Esta estimación no sustituye la orientación médica profesional.

@@ -1,7 +1,7 @@
 :root {
   --cal-primary: #00ff37;
-  --cal-bg: #ffffff;    
-  --cal-text: #222222;  
+  --cal-bg: #ffffff;
+  --cal-text: #222222;
 }
 
 .rdrCalendarWrapper {
@@ -19,7 +19,7 @@
 }
 
 .rdrMonth {
-  background-color: transparent !important; 
+  background-color: transparent !important;
 }
 
 .rdrDayNumber,
@@ -45,7 +45,9 @@
   display: none !important;
 }
 
-.rdrDay, .rdrDayNumber, .rdrDayDisabled {
+.rdrDay,
+.rdrDayNumber,
+.rdrDayDisabled {
   pointer-events: none !important;
   cursor: default !important;
 }
@@ -124,7 +126,47 @@ body {
   background-clip: padding-box, border-box;
 }
 
+.input-fecha {
+  padding-right: 2.5rem;
+}
 
+/* WebKit (Chrome, Edge, Safari) */
+.input-fecha::-webkit-calendar-picker-indicator {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #9b84d2;
+  color: #fff;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+  padding: 0;
+  margin-right: 0.25rem;
+  cursor: pointer;
+  display: inline-block;
+  opacity: 1;
+  box-shadow: none;
+  background-size: 60% 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Firefox */
+.input-fecha::-moz-focus-inner {
+  border: 0;
+}
+
+.input-fecha::-moz-calendar-picker-indicator {
+  background-color: #9b84d2;
+  color: #fff;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* subtle focus ring */
+.input-fecha:focus::-webkit-calendar-picker-indicator,
+.input-fecha:focus::-moz-calendar-picker-indicator {
+  box-shadow: 0 0 0 3px rgba(109, 104, 117, 0.12);
+}
 
 .icon {
   position: absolute;
@@ -136,17 +178,17 @@ body {
 
 .input-fecha::before,
 .input-numero::before {
-      content: '';
-      position: absolute;
-      top: 0px;
-      left: 0px ;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to bottom right, rgba(255, 244, 143, 1), rgba(255, 102, 158, 1));
-      z-index: -1; 
-      border-radius: inherit;
-      padding: 19px; 
-    }
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom right, rgba(255, 244, 143, 1), rgba(255, 102, 158, 1));
+  z-index: -1;
+  border-radius: inherit;
+  padding: 19px;
+}
 
 .input-fecha:hover,
 .input-numero:hover {
