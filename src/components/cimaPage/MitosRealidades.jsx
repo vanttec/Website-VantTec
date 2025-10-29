@@ -14,6 +14,9 @@ const MitosRealidades = () => (
       </p>
     </div>
     <MitosCarousel />
+    <p className="text-[#6D6875] text-sm mt-6 max-w-2xl text-center">
+      Información autorizada por la Asociación estudiantil de Ginecología y Obstetricia del ITESM.
+    </p>
   </section>
 );
 

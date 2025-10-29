@@ -2,45 +2,66 @@
     "mitos": [
         {
             "id": 1,
-            "mito": "No puedes hacer ejercicio durante la menstruación.",
-            "esVerdad": false,
-            "explicacion": "Falso, el ejercicio ayuda a disminuir cólicos.",
-            "detalles": "El ejercicio regular puede reducir los síntomas menstruales y mejorar el estado de ánimo."
+            "mito": "La higiene menstrual es fundamental.",
+            "esVerdad": true,
+            "explicacion": "Verdadero: Cambiar productos menstruales regularmente ayuda a prevenir infecciones.",
+            "detalles": "Cambiar toallas, tampones o copas cada 4 a 6 horas ayuda a prevenir infecciones. También es importante lavar bien las manos antes y después."
         },
         {
             "id": 2,
-            "mito": "La menstruación dura exactamente 28 días.",
+            "mito": "La regla siempre debe durar exactamente 28 días.",
             "esVerdad": false,
-            "explicacion": "Falso, puede variar entre 21 y 35 días.",
-            "detalles": "Cada mujer tiene un ciclo único y puede cambiar por diversos factores."
+            "explicacion": "Falso: Cada cuerpo es diferente.",
+            "detalles": "Un ciclo menstrual normal puede durar entre 21 y 35 días, y el sangrado de 2 a 7 días. Los primeros años tras la primera regla es común que sea irregular."
         },
         {
             "id": 3,
-            "mito": "Es normal tener cólicos muy intensos.",
-            "esVerdad": false,
-            "explicacion": "Falso, el dolor extremo puede indicar problemas.",
-            "detalles": "Si el dolor interfiere con actividades diarias, es recomendable consultar a un médico."
+            "mito": "Tener ciclos menstruales regulares es un signo de buena salud.",
+            "esVerdad": true,
+            "explicacion": "Verdadero: refleja equilibrio hormonal y salud reproductiva.",
+            "detalles": "Tener un ciclo menstrual regular indica que tu cuerpo tiene un equilibrio hormonal, buena reserva energética y un sistema reproductor saludable."
         },
         {
             "id": 4,
-            "mito": "La higiene menstrual es importante para la salud.",
-            "esVerdad": true,
-            "explicacion": "Verdad, previene infecciones y molestias.",
-            "detalles": "Cambiar productos menstruales regularmente es esencial para mantener una buena salud."
+            "mito": "Durante tu menstruación no debes hacer ejercicio.",
+            "esVerdad": false,
+            "explicacion": "Falso: el ejercicio puede ayudar a aliviar malestares.",
+            "detalles": "Hacer ejercicio no es peligroso; de hecho, puede ayudar a aliviar cólicos y mejorar el estado de ánimo. Se recomienda escuchar a tu cuerpo y descansar si hay mucho malestar."
         },
         {
             "id": 5,
-            "mito": "No puedes nadar durante tu período.",
-            "esVerdad": false,
-            "explicacion": "Falso, puedes nadar usando tampones o copas.",
-            "detalles": "La presión del agua evita que la sangre salga mientras nadas."
+            "mito": "Hablar de menstruación no debe dar vergüenza.",
+            "esVerdad": true,
+            "explicacion": "Verdadero: compartir información correcta ayuda a derribar tabúes.",
+            "detalles": "La menstruación es un proceso natural y compartir información correcta ayuda a derribar tabúes y cuidar mejor la salud física y emocional."
         },
         {
             "id": 6,
-            "mito": "El síndrome premenstrual afecta el estado de ánimo.",
+            "mito": "Si tienes cólicos fuertes, es normal y no hay nada que hacer.",
+            "esVerdad": false,
+            "explicacion": "Falso: el dolor extremo puede indicar problemas.",
+            "detalles": "Los cólicos leves son comunes, pero si el dolor impide actividades diarias, puede ser signo de condiciones como endometriosis o síndrome premenstrual severo y debe valorarlo un médico."
+        },
+        {
+            "id": 7,
+            "mito": "Las emociones y cómo te sientes puede variar durante el ciclo por la influencia de hormonas.",
             "esVerdad": true,
-            "explicacion": "Verdad, los cambios hormonales pueden afectar las emociones.",
-            "detalles": "Es normal experimentar cambios de humor debido a las fluctuaciones hormonales."
+            "explicacion": "Verdadero: los niveles hormonales influyen en el estado de ánimo.",
+            "detalles": "Durante el ciclo, los niveles hormonales cambian y pueden influir en el estado de ánimo. Dormir bien, hacer ejercicio y alimentarse saludablemente ayuda a regularlo."
+        },
+        {
+            "id": 8,
+            "mito": "La menstruación es sucia",
+            "esVerdad": false,
+            "explicacion": "Falso: es un proceso natural y saludable.",
+            "detalles": "La menstruación es una señal de que el cuerpo funciona correctamente y no tiene por qué generar vergüenza ni estigma."
+        },
+        {
+            "id": 9,
+            "mito": "El flujo puede cambiar de color o cantidad y ser normal.",
+            "esVerdad": true,
+            "explicacion": "Verdadero: variaciones en color o cantidad pueden ser normales.",
+            "detalles": "Es normal que el sangrado sea más oscuro al inicio o final del periodo, o que varíe entre días. Conocer tu patrón y consultar al médico ante cambios inusuales es importante."
         }
     ]
 }

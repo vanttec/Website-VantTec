@@ -18,7 +18,7 @@ const Project = () => (
       </a>
     </div>
     <div className="w-1/2">
-      <img src="src/assets/logo.svg" alt="Calculadora Menstrual" className="relative px-8 py-3 bg-white text-gray-800 rounded-xl font-semibold text-[24px] hover:bg-gray-50 transition-all duration-300 shadow-lg border-8 border-transparent" style={{ background: 'linear-gradient(white, white) padding-box, linear-gradient(90deg, #FFB5A7 0%, #E8A4C7 30%, #D093D4 70%, #8E7AB5 100%) border-box' }} />
+      <img src="src/assets/github-logo.png" alt="Calculadora Menstrual" className="relative px-8 py-3 bg-white text-gray-800 rounded-xl font-semibold text-[24px] hover:bg-gray-50 transition-all duration-300 shadow-lg border-8 border-transparent" style={{ background: 'linear-gradient(white, white) padding-box, linear-gradient(90deg, #FFB5A7 0%, #E8A4C7 30%, #D093D4 70%, #8E7AB5 100%) border-box' }} />
     </div>
   </section>
 );
