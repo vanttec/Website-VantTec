@@ -2,6 +2,7 @@ import React from "react";
 import { Code } from "lucide-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import githubLogo from '../../assets/github-logo.png';
 
 const Project = () => (
   <section className="flex flex-row items-center justify-center min-h-[60vh] bg-[#F8EDE8] p-8 text-center">
@@ -18,7 +19,7 @@ const Project = () => (
       </a>
     </div>
     <div className="w-1/2">
-      <img src="src/assets/github-logo.png" alt="Calculadora Menstrual" className="relative px-8 py-3 bg-white text-gray-800 rounded-xl font-semibold text-[24px] hover:bg-gray-50 transition-all duration-300 shadow-lg border-8 border-transparent" style={{ background: 'linear-gradient(white, white) padding-box, linear-gradient(90deg, #FFB5A7 0%, #E8A4C7 30%, #D093D4 70%, #8E7AB5 100%) border-box' }} />
+      <img src={githubLogo} alt="Calculadora Menstrual" className="relative px-8 py-3 bg-white text-gray-800 rounded-xl font-semibold text-[24px] hover:bg-gray-50 transition-all duration-300 shadow-lg border-8 border-transparent" style={{ background: 'linear-gradient(white, white) padding-box, linear-gradient(90deg, #FFB5A7 0%, #E8A4C7 30%, #D093D4 70%, #8E7AB5 100%) border-box' }} />
     </div>
   </section>
 );

@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { CheckCircle, BookOpen, Users } from "lucide-react";
+import aboutImg from "../../assets/AboutCIMA.png";
+import gyoImg from "../../assets/GYO.jpeg";
 
 const AboutCIMA = () => (
   <>
     <section className="flex flex-row min-h-[60vh] p-8 pb-0 text-center">
       <div className="w-1/2">
-        <img
-          src="src\assets\AboutCIMA.png"
-          alt="CIMA Logo"
-        />
+        <img src={aboutImg} alt="CIMA Logo" />
       </div>
       <div className="w-1/2 pl-8 flex flex-col justify-center">
         <h2 className="font-nunito text-3xl font-bold text-[#8E7AB5] mb-4">¿Por qué lo Hacemos?</h2>
@@ -50,7 +49,7 @@ const AboutCIMA = () => (
 
       <div className="w-1/2 flex items-center justify-center">
         <div className="w-1/2 bg-gray-100 rounded-md flex items-center justify-center">
-          <img src="src/assets/GYO.jpeg" alt="Logo" className="max-w-full max-h-full object-contain" />
+          <img src={gyoImg} alt="Logo" className="max-w-full max-h-full object-contain" />
         </div>
       </div>
     </section>
