@@ -12,6 +12,7 @@ const Navbar = ({ background, backgroundStyle }) => {
   const location = useLocation();
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+  const [mobileCommunityOpen, setMobileCommunityOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
 
@@ -139,18 +140,44 @@ const Navbar = ({ background, backgroundStyle }) => {
                 </li>
               ))}
 
-              {/* Community link (mobile) */}
-              <li
-                className={`font-poppins font-medium cursor-pointer text-[16px] ${active === "Community" || location.pathname.startsWith("/cima")
-                    ? "text-white"
-                    : "text-secondary"
-                  }`}
-                onClick={() => {
-                  setToggle(!toggle);
-                  setActive("Community");
-                }}
-              >
-                <Link to="/cima" className="block w-full">Community</Link>
+              {/* Community link (mobile) with expandable submenu */}
+              <li className={`font-poppins font-medium text-[16px] ${active === "Community" || location.pathname.startsWith("/cima") ? "text-white" : "text-secondary"}`}>
+                <button
+                  type="button"
+                  className="w-full text-left flex items-center justify-between px-0 py-1"
+                  onClick={() => {
+                    // toggle the community submenu but keep the mobile menu open
+                    setMobileCommunityOpen((v) => !v);
+                    setActive("Community");
+                  }}
+                  aria-expanded={mobileCommunityOpen}
+                >
+                  <span className="block">Community</span>
+                  <svg
+                    className={`w-4 h-4 ml-2 transform transition-transform ${mobileCommunityOpen ? "rotate-180" : "rotate-0"}`}
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                <div className={`${mobileCommunityOpen ? "flex" : "hidden"} flex-col mt-2 ml-2 space-y-1`}>
+                  <Link
+                    to="/cima"
+                    className="block w-full text-sm text-white hover:bg-white/10 rounded px-3 py-2"
+                    onClick={() => {
+                      // close mobile menu and submenu after navigation
+                      setToggle(false);
+                      setMobileCommunityOpen(false);
+                      setActive("Community");
+                    }}
+                  >
+                    CIMA
+                  </Link>
+                </div>
               </li>
             </ul>
           </div>
