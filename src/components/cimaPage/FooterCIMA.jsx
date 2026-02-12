@@ -1,6 +1,10 @@
 import React from 'react';
-// Using PNG/SVG assets exported from Figma. Place them in the public/ folder and name them:
-// /public/icons/facebook.png, /public/icons/x.png, /public/icons/instagram.png, /public/icons/code.png, /public/icons/youtube.png
+// Import assets so Vite bundles them into dist during build
+import fbIcon from '../../assets/icons/minimalistFB.png';
+import xIcon from '../../assets/icons/minimalistX.png';
+import igIcon from '../../assets/icons/minimalistIG.png';
+import ghIcon from '../../assets/icons/minimalistGH.png';
+import ytIcon from '../../assets/icons/minimalistYT.png';
 
 const FooterCIMA = () => {
     return (
@@ -31,19 +35,19 @@ const FooterCIMA = () => {
                     <p className='text-lg font-bold'>Social Media</p>
                     <div className='flex flex-wrap items-center gap-4 mt-4'>
                         <a href='https://www.facebook.com/VantTec' target='_blank' rel='noopener noreferrer' aria-label='Facebook'>
-                            <img src="src/assets/icons/minimalistFB.png" alt="Facebook" className="w-12 h-12" />
+                            <img src={fbIcon} alt="Facebook" className="w-12 h-12" />
                         </a>
                         <a href='https://twitter.com/vantTECmx' target='_blank' rel='noopener noreferrer' aria-label='X (Twitter)'>
-                            <img src="src/assets/icons/minimalistX.png" alt="X" className="w-12 h-12" />
+                            <img src={xIcon} alt="X" className="w-12 h-12" />
                         </a>
                         <a href='https://www.instagram.com/vanttec/' target='_blank' rel='noopener noreferrer' aria-label='Instagram'>
-                            <img src="src/assets/icons/minimalistIG.png" alt="Instagram" className="w-12 h-12" />
+                            <img src={igIcon} alt="Instagram" className="w-12 h-12" />
                         </a>
                         <a href="https://github.com/vanttec" target='_blank' rel='noopener noreferrer' aria-label='GitHub'>
-                            <img src="src/assets/icons/minimalistGH.png" alt="Code" className="w-12 h-12" />
+                            <img src={ghIcon} alt="Code" className="w-12 h-12" />
                         </a>
                         <a href="https://www.youtube.com/@vanttecmty" target='_blank' rel='noopener noreferrer' aria-label='YouTube'>
-                            <img src="src/assets/icons/minimalistYT.png" alt="YouTube" className="w-12 h-12" />
+                            <img src={ytIcon} alt="YouTube" className="w-12 h-12" />
                         </a>
                     </div>
                 </div>

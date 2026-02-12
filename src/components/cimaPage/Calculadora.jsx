@@ -33,7 +33,7 @@ const Calculadora = () => {
         ingresa algunos datos de tu ciclo y obtén una predicción personalizada.
       </p>
 
-      <div className="inputs-container">
+      <div className="inputs-container grid grid-cols-1 md:grid-cols-3 gap-4">
   <div className="input-box">
     <label>¿Cuándo inició tu último <br />periodo?</label>
     <div className="input-wrapper">
@@ -112,7 +112,7 @@ const Calculadora = () => {
           />
           <div className="mt-2">
             <button
-              className="boton-calcular"
+              className="boton-calcular w-full md:w-auto"
               onClick={() => setMostrarCalendario(false)}
               aria-label="Cerrar selector de fechas"
             >
