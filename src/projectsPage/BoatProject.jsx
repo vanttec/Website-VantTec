@@ -45,7 +45,7 @@ const FirstCarousel = () => (
 
 const BoatProject = () => {
   return (
-     <div className="min-h-screen bg-black text-white p-9 md:p-20">
+     <div className="min-h-screen bg-black text-white">
         <HeroUSV />
         <SponsorsUSV />
         <TeamUSV />
