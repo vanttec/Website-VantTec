@@ -31,8 +31,25 @@ import Paper10 from "./Paper10.png";
 import Paper11 from "./Paper11.png";
 import Paper12 from "./Paper12.png";
 
+// USV Boat page assets
+import boat_backdrop1 from "./boat_backdrop1.png";
+import boat_backdrop2 from "./boat_backdrop2.png";
 
+// USV Team members
+import soni from "./members_usv/soni.png";
+import ignacio from "./members_usv/ignacio.png";
+import denia from "./members_usv/denia.png";
+import mj from "./members_usv/mj.png";
+import fer from "./members_usv/fer.png";
+import pedroUSV from "./members_usv/pedro.png";
+import miaw from "./members_usv/miaw.png";
+import caro from "./members_usv/caro.png";
 
+// USV Sponsor logos
+import siemens from "./sponsors/siemens.png";
+import anmark3d from "./sponsors/anmark3d.png";
+import always_sunny from "./sponsors/always_sunny.png";
+import meca_labs from "./sponsors/meca_labs.png";
 
 export {
   logo,
@@ -66,5 +83,19 @@ export {
   Paper11,
   Paper12,
   mecalabs,
-  CIMA_Hero_img
+  CIMA_Hero_img,
+  boat_backdrop1,
+  boat_backdrop2,
+  soni,
+  ignacio,
+  denia,
+  mj,
+  fer,
+  pedroUSV,
+  miaw,
+  caro,
+  siemens,
+  anmark3d,
+  always_sunny,
+  meca_labs,
 };

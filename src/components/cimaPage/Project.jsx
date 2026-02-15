@@ -2,7 +2,7 @@ import React from "react";
 import { Code } from "lucide-react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import githubLogo from '../../assets/github-logo.png';
+import githubLogo from '../../assets/GitHub-Logo.png';
 
 const Project = () => (
   <section className="flex flex-col md:flex-row items-center justify-center min-h-[60vh] bg-[#F8EDE8] p-6 md:p-8 text-center">

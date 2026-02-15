@@ -47,8 +47,8 @@ const BoatProject = () => {
   return (
      <div className="min-h-screen bg-black text-white">
         <HeroUSV />
-        <SponsorsUSV />
         <TeamUSV />
+        <SponsorsUSV />
   </div>
 
     )

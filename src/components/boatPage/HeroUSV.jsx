@@ -1,4 +1,4 @@
-const HeroBoat = () => (
+const HeroUSV = () => (
     <>
         <section className="relative w-full h-[1150px] flex flex-col justify-between">
             {/* Background Image */}
@@ -44,4 +44,4 @@ const HeroBoat = () => (
     </>
 );
 
-export default HeroBoat;
+export default HeroUSV;
