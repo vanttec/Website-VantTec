@@ -4,6 +4,8 @@ import {home_aboutus_images, tabsDataBoat} from "../constants/index.js";
 import HeroUSV from '../components/boatPage/HeroUSV.jsx';
 import TeamUSV from '../components/boatPage/TeamUSV.jsx';
 import SponsorsUSV from '../components/boatPage/SponsorsUSV.jsx';
+import CarrouselUSV from '../components/boatPage/CarrouselUSV.jsx';
+import VideosUSV from '../components/boatPage/VideosUSV.jsx';
 import TabsComponent from '../components/shared/Tabs.jsx';
 import VideoCarousel from '../components/shared/VideoCarousel.jsx';
 
@@ -49,6 +51,8 @@ const BoatProject = () => {
         <HeroUSV />
         <TeamUSV />
         <SponsorsUSV />
+        <CarrouselUSV />
+        <VideosUSV />
   </div>
 
     )

@@ -37,12 +37,12 @@ const SponsorsUSV = () => (
         {sponsors.map((sponsor) => (
           <div
             key={sponsor.name}
-            className="flex items-center justify-center bg-white/10 rounded-xl p-6 md:p-10 backdrop-blur-sm hover:bg-white/20 transition-colors duration-300"
+            className="flex items-center justify-center bg-white/10 rounded-xl p-6 md:p-10 backdrop-blur-sm"
           >
             <img
               src={sponsor.logo}
               alt={sponsor.name}
-              className="max-h-16 md:max-h-24 w-auto object-contain brightness-0 invert"
+              className="min-w-[80px] md:min-w-[120px] max-h-16 md:max-h-24 w-auto object-contain brightness-0 invert"
             />
           </div>
         ))}

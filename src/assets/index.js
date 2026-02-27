@@ -34,6 +34,23 @@ import Paper12 from "./Paper12.png";
 // USV Boat page assets
 import boat_backdrop1 from "./boat_backdrop1.png";
 import boat_backdrop2 from "./boat_backdrop2.png";
+import barco from "./Barco.jpeg";
+import roboboatLogo from "./roboboat logo.png";
+import usvVision from "./USV_Vision.png";
+import usvMissions from "./USV_Missions.png";
+import usvMechanics from "./USV_Mechanics.png";
+import usvElectronics from "./USV_Electronics.jpg";
+
+// USV Videos and Images
+import usvVideo1 from "./videos_usv/VID 1.MOV";
+import usvVideo2 from "./videos_usv/VID 2.mp4";
+import usvVideo3 from "./videos_usv/VID 3.mov";
+import usvVideo4 from "./videos_usv/VID 4.MOV";
+import usvVideo5 from "./videos_usv/VID 5.MOV";
+import usvVideo8 from "./videos_usv/VID 8 .mp4";
+import usvImage1 from "./videos_usv/IM 1.jpeg";
+import usvImage2 from "./videos_usv/IM 2.jpeg";
+import usvImage3 from "./videos_usv/IM 3.jpeg";
 
 // USV Team members
 import soni from "./members_usv/soni.png";
@@ -44,6 +61,7 @@ import fer from "./members_usv/fer.png";
 import pedroUSV from "./members_usv/pedro.png";
 import miaw from "./members_usv/miaw.png";
 import caro from "./members_usv/caro.png";
+import mauricio from "./members_usv/mauricio.png";
 
 // USV Sponsor logos
 import siemens from "./sponsors/siemens.png";
@@ -86,6 +104,21 @@ export {
   CIMA_Hero_img,
   boat_backdrop1,
   boat_backdrop2,
+  barco,
+  roboboatLogo,
+  usvVision,
+  usvMissions,
+  usvMechanics,
+  usvElectronics,
+  usvVideo1,
+  usvVideo2,
+  usvVideo3,
+  usvVideo4,
+  usvVideo5,
+  usvVideo8,
+  usvImage1,
+  usvImage2,
+  usvImage3,
   soni,
   ignacio,
   denia,
@@ -94,6 +127,7 @@ export {
   pedroUSV,
   miaw,
   caro,
+  mauricio,
   siemens,
   anmark3d,
   always_sunny,

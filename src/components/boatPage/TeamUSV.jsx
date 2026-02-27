@@ -7,6 +7,7 @@ import {
   pedroUSV,
   miaw,
   caro,
+  mauricio,
 } from "../../assets";
 
 const row1 = [
@@ -14,11 +15,13 @@ const row1 = [
     name: "David Alejandro Soni Cuevas",
     role: "Project Leader",
     img: soni,
+    linkedin: "https://www.linkedin.com/in/sonidavid46/",
   },
   {
     name: "Ignacio Lobeira Guajardo",
     role: "Software Team Member",
     img: ignacio,
+    linkedin: "https://www.linkedin.com/in/ignaciolobeira/",
   },
 ];
 
@@ -27,16 +30,19 @@ const row2 = [
     name: "Denia Paola López Monroy",
     role: "Electronics Team Member",
     img: denia,
+    linkedin: "https://www.linkedin.com/in/denia-paola-lopez-monroy-b28402395/",
   },
   {
     name: "Marcela Josefina Flores Cantú",
     role: "Mechanical Team Leader",
     img: mj,
+    linkedin: "https://www.linkedin.com/in/mj-florescantu/",
   },
   {
     name: "Fernando Gutiérrez Karam",
     role: "Electronics Team Member",
     img: fer,
+    linkedin: "",
   },
 ];
 
@@ -45,21 +51,33 @@ const row3 = [
     name: "Pedro Librado Uribe Reyes",
     role: "Software Team Member",
     img: pedroUSV,
+    linkedin: "https://mx.linkedin.com/in/pedro-librado-uribe-reyes-b0569b332",
   },
   {
-    name: "Mauricio Caballero",
-    role: "Software Team Member",
+    name: "Mauricio Degollado Saucedo",
+    role: "Mechanical Team Member",
     img: miaw,
+    linkedin: "https://www.linkedin.com/in/mauricio-degollado-saucedo-22a033255/",
   },
   {
     name: "Carolina Guadalupe Loera Castro",
     role: "Project Manager &\nSoftware Team Member",
     img: caro,
+    linkedin: "https://www.linkedin.com/in/carolina-guadalupe-loera-castro-b9a058315/",
+  },
+  {
+    name: "Mauricio Caballero",
+    role: "Software Team Member",
+    img: mauricio,
+    linkedin: "https://www.linkedin.com/in/mauricio-caballero-z/",
   },
 ];
 
-const MemberCard = ({ name, role, img }) => (
-  <div className="flex items-end">
+const MemberCard = ({ name, role, img, linkedin }) => (
+  <div 
+    className="flex items-end cursor-pointer transition-opacity hover:opacity-80"
+    onClick={() => linkedin && window.open(linkedin, "_blank")}
+  >
     {/* Vertical text */}
     <div
       className="hidden md:flex flex-col justify-end pb-10 mr-1 shrink-0"
@@ -83,8 +101,11 @@ const MemberCard = ({ name, role, img }) => (
   </div>
 );
 
-const MobileCard = ({ name, role, img }) => (
-  <div className="flex flex-col items-center">
+const MobileCard = ({ name, role, img, linkedin }) => (
+  <div 
+    className="flex flex-col items-center cursor-pointer transition-opacity hover:opacity-80"
+    onClick={() => linkedin && window.open(linkedin, "_blank")}
+  >
     <div className="relative overflow-hidden w-36 h-48 sm:w-44 sm:h-56 rounded-sm">
       <img
         src={img}
