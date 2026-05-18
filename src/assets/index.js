@@ -17,6 +17,9 @@ import ansysInc from "./ansysInc.jpg";
 import alwayssunny from "./allwayssuny_negro.png";
 import mercalabs from "./mercalabs.png"
 import mecalabs from "./mecalabs.png";
+import collab from "./collab.png";
+import tecLogo from "./tecLogo.png";
+import proyectosAssemble from "./proyectosAssemble.png";
 import CIMA_Hero_img from "./CIMA_Hero_img.png";
 import Paper1 from "./Paper1.png";
 import Paper2 from "./Paper2.png";
@@ -98,4 +101,7 @@ export {
   anmark3d,
   always_sunny,
   meca_labs,
+  collab,
+  tecLogo,
+  proyectosAssemble,
 };

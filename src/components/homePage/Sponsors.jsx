@@ -1,81 +1,72 @@
 import React, { useState } from "react";
-import { ansysInc, grupoSSC, mercalabs, alwayssunny, mecalabs } from "../../assets";
-import BounceCards from "../shared/BouceCards";
+import { tecLogo, collab, anmark3d, mecalabs, always_sunny, siemens, proyectosAssemble } from "../../assets";
 
-const SponsorCard = ({ name, logo }) => {
-  const [showText, setShowText] = useState(false);
-
-  const handleClick = () => {
-    setShowText(!showText);
-  };
-
-
+export default function Sponsors() {
   return (
-    <div
-      className="relative flex flex-col justify-center items-center pb-0 cursor-pointer w-32 h-32" // Fixed width and height
-      onClick={handleClick}
-    >
+    <div className="relative w-full min-h-[1800px] bg-[radial-gradient(65.79%_65.79%_at_50%_34.21%,#01165C_0%,#010C3D_55%,#01072E_85%,#010521_100%)]">
+
+      {/* Background Poster */}
       <img
-        src={logo}
-        alt={name}
-        className={`w-full h-full object-contain p-4 transition duration-300 ease-in-out ${
-          showText ? "brightness-50" : "hover:brightness-50"
-        }`}
+        src={proyectosAssemble}
+        className="absolute left-[62px] top-4 w-[1315px] max-w-none opacity-[0.20]"
+        alt="Posters Danny De Jorge"
       />
-      <div
-        className={`absolute inset-0 flex justify-center items-center bg-black transition-all duration-300 ${
-          showText ? "bg-opacity-85" : "bg-opacity-0 hover:bg-opacity-50"
-        }`}
-      >
-        <p
-          className={`text-white text-center transition-all duration-300 ${
-            showText ? "opacity-100" : "opacity-0 hover:opacity-100"
-          }`}
-        >
-          {name}
-        </p>
+
+      {/* Title */}
+      <h1 className="absolute left-[195px] top-[143px] w-[1120px] text-6xl font-montserrat text-[#E5E8EF]">
+        N A V I G A T I N G &nbsp; T H E &nbsp; F U T U R E
+      </h1>
+
+      {/* Subtitle */}
+      <p className="absolute left-[350px] top-64 w-[755px] text-[50px] font-inter text-[#E5E8EF]">
+        Made possible by our sponsors
+      </p>
+
+      {/* Sponsors Section */}
+      <div className="absolute left-[108px] top-[460px] h-[783px] w-[1196px]">
+
+        {/* TEC Logo */}
+        <img
+          src={tecLogo}
+          className="absolute left-[71px] top-3.5 w-[400px] max-w-none"
+          alt="TEC Logo"
+        />
+
+        {/* MecaLabs */}
+        <img
+          src={mecalabs}
+          className="absolute left-[700px] top-0 w-[450px] max-w-none"
+          alt="MecaLabs Logo"
+        />
+
+        {/* Anmark 3D Logo */}
+        <img
+          src={anmark3d}
+          className="absolute left-0 top-[200px] w-[711px] max-w-none"
+          alt="Main Sponsor Logo"
+        />
+
+        {/* Collab logo */}
+        <img
+          src={collab}
+          className="absolute left-[718px] top-[250px] w-[500px] max-w-none"
+          alt="Design Poster"
+        />
+
+        {/* Always Sunny logo */}
+        <img
+          src={always_sunny}
+          className="absolute left-[121px] top-[647px] w-[366px] max-w-none"
+          alt="Secondary Sponsor Logo"
+        />
+
+        {/* SIE Logo */}
+        <img
+          src={siemens}
+          className="absolute left-[647px] top-[733px] w-[500px] max-w-none"
+          alt="SIE Logo"
+        />
       </div>
     </div>
   );
-};
-
-const Sponsors = () => {
-
-  const my_images = [
-    ansysInc,
-    grupoSSC,
-    mercalabs,
-    alwayssunny
-  ];
-  
-  const transformStyles = [
-    "rotate(5deg) translate(-150px)",
-    "rotate(0deg) translate(-70px)",
-    "rotate(-5deg)",
-    "rotate(5deg) translate(70px)",
-    "rotate(-5deg) translate(150px)"
-  ];
-
-  return (
-    <>
-      <section id="sponsors">
-        <div className="flex flex-col">
-          <h2 className="text-2xl text-white font-thin mb-6 text-center">Sponsors</h2>
-            <BounceCards
-              className="custom-bounceCards mx-auto"
-              images={my_images}
-              containerWidth={500}
-              containerHeight={250}
-              animationDelay={1}
-              animationStagger={0.08}
-              easeType="elastic.out(1, 0.5)"
-              transformStyles={transformStyles}
-              enableHover={true}
-            />
-          </div>
-        </section>
-    </>
-  );
-};
-
-export default Sponsors;
+}
