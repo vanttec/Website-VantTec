@@ -82,7 +82,6 @@ const App = () => {
               <Research />
               <Sponsors />
               <ContactUs />
-              <Footer />
             </div>
           }
         />
