@@ -32,7 +32,7 @@ const ContactUs = () => {
 
                 {/* Reach Out button — opens email app with pre-filled address */}
                 <a  
-                    href="mailto:vanttec@tec.mx"
+                    href="mailto:vanttec@servicios.tec.mx?subject=Contacto%20VantTec&body=¡Hola!%20Les%20escribo%20porque%20estoy%20interesado%20en%20conocer%20más%20sobre%20VantTec%20y%20sus%20proyectos.%20Quedo%20en%20espera%20de%20su%20respuesta."
                     className="
                         bg-white text-black 
                         font-montserrat font-bold 
