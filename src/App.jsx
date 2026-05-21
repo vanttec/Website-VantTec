@@ -154,8 +154,12 @@ const App = () => {
         <Route
           path="/SMALC"
           element={
-            <div>
-              <Navbar background={"bg-primary"}/>
+            <div style={{
+              background: 'radial-gradient(circle at 50% 50%, #0165C5 0%, #01072E 50%, #01072E 100%)',
+              backgroundAttachment: 'fixed',
+              minHeight: '100vh'
+            }}>
+              <Navbar background={"bg-slate-900/95"}/>
               <HeroSMALC />
               <AboutSMALC />
               <TestimonialsSMALC />
