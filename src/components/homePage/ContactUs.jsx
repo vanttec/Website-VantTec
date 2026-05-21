@@ -16,17 +16,17 @@ const ContactUs = () => {
             <div className="relative z-10 flex flex-col items-center justify-center flex-1 pt-24 pb-12">
                 
                 {/* Subtitle */}
-                <p className="text-white tracking-widest text-sm uppercase mb-4 font-urbanist">
+                <p className="text-white tracking-widest text-xs md:text-sm uppercase mb-4 font-urbanist text-center px-4">
                     Navigate the future with us
                 </p>
 
                 {/* Main title */}
-                <h1 className="text-white text-7xl font-black uppercase font-montserrat">
+                <h1 className="text-white text-4xl md:text-7xl font-black uppercase font-montserrat text-center">
                     Reach Out
                 </h1>
 
                 {/* Anytime */}
-                <p className="text-white text-2xl font-light mb-6 font-montserrat">
+                <p className="text-white text-xl md:text-2xl font-light mb-6 font-montserrat text-center">
                     anytime
                 </p>
 
@@ -49,14 +49,15 @@ const ContactUs = () => {
             </div>
 
             {/* Bottom bar */}
-            <div className="relative z-10 flex flex-row justify-between items-center px-10 py-8 text-white">
+            <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8 px-6 md:px-10 py-8 text-white">
                 
                 {/* Address */}
-                <div className="text-sm font-urbanist">
+                <div className="text-sm font-urbanist text-center md:text-left">
                     <p className="font-bold text-base mb-1">Address</p>
-                    <p>México, Nuevo León, Monterrey, Instituto</p>
-                    <p>Tecnológico de Estudios Superiores</p>
-                    <p>Av. Eugenio Garza Sada 2501 Sur, Tecnológico, 64700</p>
+                    <p>México, Nuevo León, Monterrey,</p>
+                    <p>Instituto Tecnológico de Estudios Superiores</p>
+                    <p>Av. Eugenio Garza Sada 2501 Sur,</p>
+                    <p>Tecnológico, 64700</p>
                 </div>
 
                 {/* Social Media */}
@@ -82,7 +83,7 @@ const ContactUs = () => {
                 </div>
 
                 {/* Tec Logo */}
-                <img src={TecLogo} alt="Tec de Monterrey" className="h-16" />
+                <img src={TecLogo} alt="Tec de Monterrey" className="h-12 md:h-16" />
             </div>
         </section>
     );
