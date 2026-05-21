@@ -25,6 +25,10 @@ import AboutCIMA from "./components/cimaPage/AboutCIMA";
 import Calculadora from "./components/cimaPage/Calculadora";
 import MitosRealidades from "./components/cimaPage/MitosRealidades";
 import Project from "./components/cimaPage/Project";
+import HeroSMALC from "./components/smalcPage/HeroSMALC";
+import AboutSMALC from "./components/smalcPage/AboutSMALC";
+import TestimonialsSMALC from "./components/smalcPage/TestimonialsSMALC";
+import WorkshopSMALC from "./components/smalcPage/WorkshopSMALC";
 
 
 const App = () => {
@@ -143,6 +147,24 @@ const App = () => {
               <MitosRealidades />
               <Project />
               <FooterCIMA />
+            </div>
+          }
+        />
+        {/* SMALC Route */}
+        <Route
+          path="/SMALC"
+          element={
+            <div style={{
+              background: 'radial-gradient(circle at 50% 50%, #0165C5 0%, #01072E 50%, #01072E 100%)',
+              backgroundAttachment: 'fixed',
+              minHeight: '100vh'
+            }}>
+              <Navbar background={"bg-slate-900/95"}/>
+              <HeroSMALC />
+              <AboutSMALC />
+              <TestimonialsSMALC />
+              <WorkshopSMALC />
+              <Footer />
             </div>
           }
         />

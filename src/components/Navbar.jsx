@@ -98,6 +98,13 @@ const Navbar = ({ background, backgroundStyle }) => {
               >
                 CIMA
               </Link>
+              <Link
+                to="/smalc"
+                className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-white/10 rounded"
+                onClick={() => setActive("Community")}
+              >
+                SMALC
+              </Link>
             </div>
           </li>
         </ul>
