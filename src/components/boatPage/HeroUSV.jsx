@@ -1,10 +1,13 @@
+import barcoImage from "../../assets/Barco.jpeg";
+import roboboatLogo from "../../assets/roboboat logo.png";
+
 const HeroUSV = () => (
     <>
         <section className="relative w-full h-[1150px] flex flex-col justify-between">
             {/* Background Image */}
             <div className="absolute inset-0 w-full h-full">
                 <img
-                    src="src\assets\Barco.jpeg"
+                    src={barcoImage}
                     alt="USV Background"
                     className="w-full h-full object-cover object-bottom" />
                 {/* Optional dark overlay for better text readability */}
@@ -24,7 +27,7 @@ const HeroUSV = () => (
                     <span className="text-2xl md:text-7xl font-semibold text-white italic">
                         for
                     </span>
-                    <img className="h-44 md:h-72 -mt-16 md:-mt-24" src="src\assets\roboboat logo.png" alt="roboboat" />
+                    <img className="h-44 md:h-72 -mt-16 md:-mt-24" src={roboboatLogo} alt="roboboat" />
                 </div>
             </div>
         </section><div className="w-full px-8 md:px-16 py-16 bg-black/20">
