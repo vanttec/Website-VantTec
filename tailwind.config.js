@@ -31,6 +31,8 @@ const config = {
         roboto: ['Roboto', 'sans-serif'],
         nunito: ['Nunito', 'sans-serif'],
         quicksand: ['Quicksand', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        urbanist: ['Urbanist', 'sans-serif'],
       }
     },
   },
