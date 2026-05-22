@@ -19,21 +19,21 @@ export const navLinks = [
     title: "Projects",
   },
   {
-    id: "research",
-    title: "Research",
-  },
-  {
     id: "awards",
     title: "Awards",
   },
   {
-    id:"sponsors",
-    title: "Sponsors"
+    id: "research",
+    title: "Research",
   },
   {
-    id:"contactus",
-    title: "Contact Us"
-  }
+    id: "sponsors",
+    title: "Sponsors",
+  },
+  {
+    id: "contactus",
+    title: "Contact Us",
+  },
 ];
 
 const cardsData = [

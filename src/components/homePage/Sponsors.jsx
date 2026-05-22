@@ -43,7 +43,7 @@ export default function Sponsors() {
   ];
 
   return (
-    <div className="relative w-full overflow-x-hidden bg-[radial-gradient(65.79%_65.79%_at_50%_34.21%,#01165C_0%,#010C3D_55%,#01072E_85%,#010521_100%)]">
+    <div id="sponsors" className="relative w-full min-h-[1800px] bg-[radial-gradient(65.79%_65.79%_at_50%_34.21%,#01165C_0%,#010C3D_55%,#01072E_85%,#010521_100%)]">
 
       {/* Background Poster — hidden on mobile to avoid overflow */}
       <img
