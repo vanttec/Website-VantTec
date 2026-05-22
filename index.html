@@ -12,6 +12,21 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+  <!-- MapMyVisitors — tracks visitor locations and pageviews -->
+    <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=uDZPtspu_M6Kab5IeXimUPaZbqmT4-0NDVRnJ52h7ek&cl=ffffff&w=0"></script>
+    <style>
+      #mapmyvisitors_widget,
+      #mapmyvisitors,
+      [id^="mmv"],
+      [id*="mapmyvisitors"],
+      [class*="mapmyvisitors"] {
+        display: none !important;
+        height: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
+      }
+    </style>
+
 </body>
 
 </html>
