@@ -1,88 +1,130 @@
-import React from 'react'; // Import React for component creation
-import { awards_us_images } from '../../constants/index.js'; // Import image data from constants file
-import Carousel from '../shared/Carousel.jsx'; // Import the custom Carousel component
-import { motion } from 'framer-motion';
-import { Medal } from 'lucide-react';
+import React from 'react';
+import humansIcon from '../../assets/icons/humans.png';
+import trophyIcon from '../../assets/icons/trophy.png';
+import documentIcon from '../../assets/icons/document.png';
+import medalIcon from '../../assets/icons/medal.png';
+import wreathIcon from '../../assets/icons/wreath.png';
 
-/**
- * Awards Component
- * Displays a carousel of Vanntec participants
- * Uses predefined images from constants to showcase research papers
- * @returns {JSX.Element} Rendered Research component with carousel
- */
-const FirstCarousel = () => (
-  <Carousel images={awards_us_images} slidesToShow={1} height={"700px"} arrows={false} autoplay={true} autoplaySpeed={3000} speed={400} isHoverable={true} objectFit={true}></Carousel>
-);
-const Awards = () => {
+const stats = [
+  {
+    icon: humansIcon,
+    value: '73',
+    label: 'Members',
+    bg: 'bg-[#48658A]',
+  },
+  {
+    icon: trophyIcon,
+    value: '18',
+    label: 'International Awards',
+    bg: 'bg-[#393780]',
+  },
+  {
+    icon: documentIcon,
+    value: '12',
+    label: 'Papers Published',
+    bg: 'bg-[#143D71]',
+  },
+  {
+    icon: medalIcon,
+    value: '7',
+    label: 'International Competitions',
+    bg: 'bg-[#1C4289]',
+  },
+];
+
+const awards = [
+  { category: 'RoboNation', name: 'Special Persistence Award', year: '2024' },
+  { category: 'Xignux Challenge', name: 'Finalists - 24-Hour Challenge', year: '2024' },
+  { category: 'Rómulo Garza Ceremony', name: 'Award for Professional Students', year: '2021' },
+  { category: 'International Competition', name: '1st Place - Overall + $3,000 Prize', year: '2020' },
+  { category: 'International Competition', name: '1st Place - Technical Report, Video & Website', year: '2020' },
+  { category: 'International Competition', name: 'Special Award - Testing on the Horizon', year: '2020' },
+  { category: 'RoboNation', name: '5th Place', year: '2019' },
+  { category: 'Engineering Excellence', name: 'Special Award for Engineering Integrity', year: '2018' },
+  { category: 'Aerial Robotics', name: 'Special Drone Award', year: '2017' },
+];
+
+export default function Awards() {
   return (
-    <> 
-    <section id="awards"> 
-    <div className="container mx-auto px-4 py-8">
-      <h2 className="text-2xl text-white font-thin mb-6 text-center">
-            Awards
-      </h2>
-      <div className="container mx-auto px-4 py-12 space-y-8">
-        <div className="flex flex-col md:grid md:grid-cols-2 gap-8">
-          {/* Carousel on the left */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col justify-center"
+    <section
+      id="awards"
+      className="w-full min-h-screen overflow-x-hidden bg-[radial-gradient(50%_50%_at_50%_50%,#01165C_0%,#010C3D_55%,#01072E_93%,#010521_100%)] px-6 md:px-16 py-16 md:py-24"
+    >
+      {/* Section header */}
+      <div className="text-center mb-12 md:mb-16">
+        <p className="text-white/60 tracking-widest text-xs md:text-sm uppercase mb-2 font-urbanist">
+          Competing Globally
+        </p>
+        <h2 className="text-white text-4xl md:text-6xl font-black uppercase font-montserrat">
+          Awards
+        </h2>
+        <p className="text-[#B8CDE9] text-sm md:text-base font-urbanist mt-2">
+          Recognizing our milestones
+        </p>
+      </div>
+      {/* Stats grid — 2x2 */}
+      <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-4xl mx-auto mb-16 md:mb-24">
+        {stats.map((stat) => (
+          <div
+            key={stat.label}
+            className={`${stat.bg} rounded-[20px] md:rounded-[30px] flex flex-row items-center gap-3 md:gap-6 px-4 md:px-8 py-4 md:py-6`}
           >
-            <FirstCarousel />
-          </motion.div>
-
-          {/* Text content on the right */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col justify-center"
-          >
-            {/* Award Section */}
-            <div className="space-y-4">
-                <Medal className="w-9 h-9 text-yellow-600 opacity-80 mr-2" /> 
-                <p className="text-lg text-gray-300 font-light">
-                  <strong className="font-extrabold text-xl">2021:</strong> Award for professional students in the Rómulo Garza ceremony.
-                </p>
-                <p className="text-lg text-gray-300 font-light">
-                <strong className="font-extrabold text-xl">2020:</strong>
-                <ul className="list-disc ml-6 space-y-1">
-                  <li>1st place in the competition with a $3,000 prize.</li>
-                  <li>1st place in the technical report design.</li>
-                  <li>1st place in the introduction video.</li>
-                  <li>1st place in the website.</li>
-                  <li>Special award in the Testing on the Horizon category.</li>
-                </ul>
-              </p>
-              <p className="text-lg text-gray-300 font-light">
-                <strong className="font-extrabold text-xl">2018:</strong> Special Award for Engineering Integrity.
-              </p>
-              <p className="text-lg text-gray-300 font-light">
-                <strong className="font-extrabold text-xl">2017:</strong> Special Award for Drone Award.
-              </p>
-                <Medal className="w-9 h-9 text-gray-600 opacity-80 mr-2" />
-                <p className="text-lg text-gray-300 font-light">
-                  <strong className="font-extrabold text-xl">2024:</strong> Special Persistence Award from RoboNation.
-                </p>
-
-                <Medal className="w-9 h-9 text-white opacity-40 mr-2" />
-                <p className="text-lg text-gray-300 font-light">
-                  <strong className="font-extrabold text-xl">2024:</strong> VantTec had the honor of being finalists in the 24-hour Xignux Challenge.
-                </p>
-              <p className="text-lg text-gray-300 font-light">
-                <strong className="font-extrabold text-xl">2019:</strong> 5th place in the Robonations competition.
-              </p>
+            {/* Icon */}
+            <img
+              src={stat.icon}
+              alt={stat.label}
+              className="w-8 h-8 md:w-12 md:h-12 object-contain"
+            />
+            {/* Text */}
+            <div className="flex flex-col">
+              <span className="text-white font-leagueSpartan font-semibold text-2xl md:text-4xl leading-none">
+                {stat.value}
+              </span>
+              <span className="text-[#B8CDE9] font-leagueSpartan font-semibold text-xs md:text-base leading-tight mt-1">
+                {stat.label}
+              </span>
             </div>
-          </motion.div>
+          </div>
+        ))}
+      </div>
+
+      {/* Bottom section — wreath + awards list */}
+      <div className="flex flex-col md:flex-row items-start justify-center gap-8 md:gap-16 max-w-4xl mx-auto">
+
+        {/* Laurel wreath — hidden on mobile, shown on md+ */}
+        <div className="hidden md:flex items-center justify-center md:w-1/3">
+          <img
+            src={wreathIcon}
+            alt="Award wreath"
+            className="w-48 md:w-64 object-contain opacity-80"
+          />
+        </div>
+
+        {/* Awards list */}
+        <div className="w-full md:w-2/3 flex flex-col divide-y divide-white/10">
+          {awards.map((award) => (
+            <div
+              key={`${award.name}-${award.year}`}
+              className="flex flex-row justify-between items-start py-3 md:py-4 gap-4"
+            >
+              {/* Left — category + name */}
+              <div className="flex flex-col">
+                <span className="text-[#B8CDE9] font-leagueSpartan text-xs md:text-sm font-normal">
+                  {award.category}
+                </span>
+                <span className="text-white font-leagueSpartan font-semibold text-sm md:text-base">
+                  {award.name}
+                </span>
+              </div>
+
+              {/* Right — year */}
+              <span className="text-[#B8CDE9] font-leagueSpartan text-xs md:text-sm whitespace-nowrap">
+                / {award.year}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
     </section>
-    </>
   );
-};
-
-
-export default Awards; // Export the Awards component
+}
