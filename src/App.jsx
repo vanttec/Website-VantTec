@@ -9,6 +9,7 @@ import InfiniteMenu from "./components/shared/InfiniteMenu";
 import ContactUs from "./components/homePage/ContactUs";
 import CalculoDeFecha from "./components/cimaPage/Calculadora";
 import FooterCIMA from "./components/cimaPage/FooterCIMA";
+import WhatDrivesUs from './components/homePage/WhatDrivesUs';
 
 import {
   sdv,
@@ -82,6 +83,7 @@ const App = () => {
               </div>
               <About />
               <Projects />
+              <WhatDrivesUs />
               <Awards />
               <Research />
               <Sponsors />
