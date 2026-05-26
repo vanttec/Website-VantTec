@@ -1,76 +1,62 @@
-import { motion } from "framer-motion";
-import { styles } from "../../styles";
-import { arrow, videoBG } from '../../assets'
-import { TypeAnimation } from 'react-type-animation';
+import { useEffect, useState } from "react";
+import { heroCollage } from "../../assets";
 
 const Hero = () => {
-  const scrollToSection = () => {
-    window.scrollTo({
-      top: window.innerHeight * 0.90,
-      behavior: 'smooth',
-    });
-  };
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <section className="relative w-full h-screen mx-auto">
-      <video src={videoBG} autoPlay loop muted className="absolute w-full h-full object-cover" />
-      <div className="absolute w-full h-full top-0 left-0 bg-[#000000cc]"></div>
-      <div className={`absolute inset-0 m-auto flex flex-col items-center justify-center`}>
-          <h1 className={`${styles.heroHeadText} text-white`}>
-            Vant<span className="text-[#345ba3]">TEC</span></h1>
-          <TypeAnimation
-      sequence={[
-        'The Future of Technology',
-        1000,
-        'The Future of Mobility',
-        1000,
-        'The Future of Innovation',
-        1000,
-        'The Future of Research',
-        1000,
-        'Navigating the Future',
-        1000
-      ]}
-      wrapper="span"
-      speed={30}
-      style={{ fontSize: '2em', display: 'inline-block' }}
-      repeat={0}
-      className={`${styles.heroSubText} mt-2 text-white`}
-    />
-      </div>
-      <motion.div 
-        className='absolute xs:bottom-10 bottom-32 w-full flex 
-        justify-center items-center'
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 13, duration: 1 }}
+    <section
+      className="relative w-full min-h-[60vh] sm:min-h-screen flex items-start sm:items-center justify-center pt-24 sm:pt-0"
+      style={{ backgroundColor: "#020B2D" }}
+    >
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 left-0 w-full"
+        viewBox="0 0 1440 1297"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYTop slice"
+        style={{ zIndex: 0, height: "160%" }}
       >
-        <a onClick={scrollToSection}>
-          <div className='w-[48px] h-[48px] rounded-[10px] 
-          bg-gradient-to-r from-blue-500 via-indigo-500 
-          to-cyan-500 flex justify-center items-start p-[2px] 
-          hover:shadow-lg hover:shadow-purple-600/30'>
-            <div className='flex h-full w-full items-center 
-            justify-center rounded-[10px] bg-primary'>
-              <motion.div 
-                animate={{
-                  y: [0, -10, 0],
-                }}
-                transition={{
-                  duration: 3, 
-                  repeat: Infinity, 
-                  repeatType: "loop",
-                }}
-              >
-                <img src={arrow} alt="Flecha hacia abajo" 
-                className=""/>
-              </motion.div>
-            </div>
-          </div>
-        </a>
-      </motion.div>
-    </section>
-  )
-}
+        <path
+          d="M-134.068 -146.448C-400.784 242.665 -258.303 803.971 184.172 1107.26C626.648 1410.56 1201.56 1340.99 1468.28 951.873C1734.99 562.76 1592.51 1.45394 1150.04 -301.839C707.562 -605.132 132.649 -535.561 -134.068 -146.448Z"
+          fill="url(#ellipseGradient)"
+        />
+        <defs>
+          <linearGradient
+            id="ellipseGradient"
+            x1="292.725"
+            y1="155.796"
+            x2="1252.67"
+            y2="813.786"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0.3125" stopColor="#03165C" stopOpacity="0.84" />
+            <stop offset="0.605769" stopColor="#03165C" stopOpacity="0.29" />
+            <stop offset="1" stopColor="#000733" stopOpacity="0.51" />
+          </linearGradient>
+        </defs>
+      </svg>
 
-export default Hero
+      <div
+        className={`relative z-10 w-full max-w-[95vw] sm:max-w-5xl lg:max-w-7xl px-0 sm:px-8 transition-opacity duration-1000 ${
+          visible ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <img
+          src={heroCollage}
+          alt="VANTTEC — Navigating the Future"
+          className="w-full h-auto object-contain"
+          style={{ mixBlendMode: "screen" }}
+        />
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

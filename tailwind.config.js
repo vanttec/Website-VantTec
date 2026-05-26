@@ -33,6 +33,7 @@ const config = {
         quicksand: ['Quicksand', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'],
         urbanist: ['Urbanist', 'sans-serif'],
+        raleway: ['Raleway', 'sans-serif'],
       }
     },
   },

@@ -15,7 +15,6 @@ const Navbar = ({ background, backgroundStyle }) => {
   const [mobileCommunityOpen, setMobileCommunityOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -27,18 +26,18 @@ const Navbar = ({ background, backgroundStyle }) => {
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // computed background class (default behavior)
-  const computedBgClass = scrolled ? "bg-primary" : "bg-transparent";
-  // allow consumer to override background via `background` (class string) or `backgroundStyle` (inline style)
+  const computedBgClass = scrolled
+    ? "bg-[#B8CDE9]/20 backdrop-blur-md border-white/10 px-6"
+    : "bg-[#B8CDE9]/10 backdrop-blur-sm border-white/5 px-6";
+
   const bgClass = background ?? computedBgClass;
 
   return (
     <nav
-      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 ${bgClass}`}
+      className={`flex items-center py-3 fixed top-4 left-4 right-4 sm:left-8 sm:right-8 lg:left-12 lg:right-12 z-20 rounded-[30px] border transition-all duration-300 ${bgClass}`}
       style={backgroundStyle}
     >
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
@@ -50,10 +49,9 @@ const Navbar = ({ background, backgroundStyle }) => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="logo" className="h-12 w-auto object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex ">
-            VantTEC &nbsp;
-            <span className="sm:block hidden"> | Navigating the future</span>
+          <img src={logo} alt="logo" className="h-14 w-auto object-contain" />
+          <p className="text-white text-[18px] font-bold cursor-pointer flex">
+            VantTEC
           </p>
         </Link>
 
@@ -61,35 +59,24 @@ const Navbar = ({ background, backgroundStyle }) => {
           {navLinks.map((nav) => (
             <li
               key={nav.id}
-              className={`${active === nav.title ? "text-white" : "text-secondary"
-                } hover:text-white text-[18px] font-medium cursor-pointer`}
+              className={`${active === nav.title ? "text-white" : "text-white/70"} hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={() => setActive(nav.title)}
             >
               {location.pathname === "/" ? (
-                <ScrollLink
-                  to={nav.id}
-                  smooth={true}
-                  duration={500}
-                  offset={-70}
-                >
+                <ScrollLink to={nav.id} smooth={true} duration={500} offset={-70}>
                   {nav.title}
                 </ScrollLink>
               ) : (
-                <Link to={`/#${nav.id}`}>{nav.title}</Link> // Redirect to home with the section hash
+                <Link to={`/#${nav.id}`}>{nav.title}</Link>
               )}
             </li>
           ))}
 
-          {/* dropdown */}
           <li
-            className={`${active === "Community"
-                ? "text-white"
-                : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer flex items-center relative group`}
+            className={`${active === "Community" ? "text-white" : "text-white/70"} hover:text-white text-[18px] font-medium cursor-pointer flex items-center relative group`}
             onClick={() => setActive("Community")}
           >
             <div className="flex items-center">Community</div>
-
             <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all flex-col absolute top-full right-0 mt-2 min-w-[150px] bg-primary rounded-md shadow-lg z-50 p-2">
               <Link
                 to="/cima"
@@ -118,27 +105,20 @@ const Navbar = ({ background, backgroundStyle }) => {
           />
 
           <div
-            className={`${!toggle ? "hidden" : "flex"
-              } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+            className={`${!toggle ? "hidden" : "flex"} p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
               {navLinks.map((nav) => (
                 <li
                   key={nav.id}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.title ? "text-white" : "text-secondary"
-                    }`}
+                  className={`font-poppins font-medium cursor-pointer text-[16px] ${active === nav.title ? "text-white" : "text-white/70"}`}
                   onClick={() => {
                     setToggle(!toggle);
                     setActive(nav.title);
                   }}
                 >
                   {location.pathname === "/" ? (
-                    <ScrollLink
-                      to={nav.id}
-                      smooth={true}
-                      duration={500}
-                      offset={-70}
-                    >
+                    <ScrollLink to={nav.id} smooth={true} duration={500} offset={-70}>
                       {nav.title}
                     </ScrollLink>
                   ) : (
@@ -147,13 +127,11 @@ const Navbar = ({ background, backgroundStyle }) => {
                 </li>
               ))}
 
-              {/* Community link (mobile) with expandable submenu */}
-              <li className={`font-poppins font-medium text-[16px] ${active === "Community" || location.pathname.startsWith("/cima") ? "text-white" : "text-secondary"}`}>
+              <li className={`font-poppins font-medium text-[16px] ${active === "Community" || location.pathname.startsWith("/cima") ? "text-white" : "text-white/70"}`}>
                 <button
                   type="button"
                   className="w-full text-left flex items-center justify-between px-0 py-1"
                   onClick={() => {
-                    // toggle the community submenu but keep the mobile menu open
                     setMobileCommunityOpen((v) => !v);
                     setActive("Community");
                   }}
@@ -176,7 +154,6 @@ const Navbar = ({ background, backgroundStyle }) => {
                     to="/cima"
                     className="block w-full text-sm text-white hover:bg-white/10 rounded px-3 py-2"
                     onClick={() => {
-                      // close mobile menu and submenu after navigation
                       setToggle(false);
                       setMobileCommunityOpen(false);
                       setActive("Community");
