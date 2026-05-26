@@ -34,6 +34,8 @@ const config = {
         montserrat: ['Montserrat', 'sans-serif'],
         raleway: ['Raleway', 'sans-serif'],
         urbanist: ['Urbanist', 'sans-serif'],
+        leagueSpartan: ['League Spartan', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       }
     },
   },
