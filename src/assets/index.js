@@ -51,11 +51,18 @@ import pedroUSV from "./members_usv/pedro.png";
 import miaw from "./members_usv/miaw.png";
 import caro from "./members_usv/caro.png";
 
-// USV Sponsor logos
+// Sponsor logos
 import siemens from "./sponsors/siemens.png";
 import anmark3d from "./sponsors/anmark3d.png";
 import always_sunny from "./sponsors/always_sunny.png";
 import meca_labs from "./sponsors/meca_labs.png";
+
+// RESEARCH PUBLICATION IMAGES
+import papers1 from "./papers1.png"
+import papers2 from "./papers2.png"
+import papers3 from "./papers3.png"
+import papers4 from "./papers4.png"
+import vanttecarrow from "./vanttecarrow.png";
 
 export {
   logo,
@@ -76,6 +83,9 @@ export {
   ansysInc,
   mercalabs,
   alwayssunny,
+  collab,
+  tecLogo,
+  proyectosAssemble,
   Paper1,
   Paper2,
   Paper3,
@@ -104,10 +114,12 @@ export {
   anmark3d,
   always_sunny,
   meca_labs,
-  collab,
-  tecLogo,
-  proyectosAssemble,
   heroCollage,
   swarm,
   uav,
+  vanttecarrow,
+  papers1,
+  papers2,
+  papers3,
+  papers4,
 };

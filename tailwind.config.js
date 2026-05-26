@@ -32,8 +32,10 @@ const config = {
         nunito: ['Nunito', 'sans-serif'],
         quicksand: ['Quicksand', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'],
-        urbanist: ['Urbanist', 'sans-serif'],
         raleway: ['Raleway', 'sans-serif'],
+        urbanist: ['Urbanist', 'sans-serif'],
+        leagueSpartan: ['League Spartan', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       }
     },
   },

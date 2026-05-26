@@ -9,6 +9,19 @@ import ContactUs from "./components/homePage/ContactUs";
 import FooterCIMA from "./components/cimaPage/FooterCIMA";
 import Hero from "./components/homePage/Hero";
 import Projects from "./components/homePage/Projects";
+import WhatDrivesUs from './components/homePage/WhatDrivesUs';
+
+import {
+  sdv,
+  drone,
+  boat,
+  submarine,
+  juanito,
+  maria,
+  pedro,
+  ana,
+} from "./assets";
+
 import HeroCIMA from "./components/cimaPage/HeroCIMA";
 import AboutCIMA from "./components/cimaPage/AboutCIMA";
 import Calculadora from "./components/cimaPage/Calculadora";
@@ -32,6 +45,7 @@ const App = () => {
               <Hero />
               <Projects />
               <About />
+              <WhatDrivesUs />
               <Awards />
               <Research />
               <Sponsors />
