@@ -54,6 +54,13 @@ import anmark3d from "./sponsors/anmark3d.png";
 import always_sunny from "./sponsors/always_sunny.png";
 import meca_labs from "./sponsors/meca_labs.png";
 
+// RESEARCH PUBLICATION IMAGES
+import papers1 from "./papers1.png"
+import papers2 from "./papers2.png"
+import papers3 from "./papers3.png"
+import papers4 from "./papers4.png"
+import vanttecarrow from "./vanttecarrow.png";
+
 export {
   logo,
   menu,
@@ -104,4 +111,9 @@ export {
   collab,
   tecLogo,
   proyectosAssemble,
+  vanttecarrow,
+  papers1,
+  papers2,
+  papers3,
+  papers4,
 };
