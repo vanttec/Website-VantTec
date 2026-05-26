@@ -16,7 +16,7 @@ import grupoSSC from "./grupoSSC.png";
 import ansysInc from "./ansysInc.jpg";
 import alwayssunny from "./allwayssuny_negro.png";
 import mercalabs from "./mercalabs.png";
-import mecalabs from "./mecalabs.png";
+import mecalabs from "./mercalabs.png";
 import collab from "./collab.png";
 import tecLogo from "./tecLogo.png";
 import proyectosAssemble from "./proyectosAssemble.png";
