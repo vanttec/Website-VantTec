@@ -14,6 +14,9 @@ import ana from "./ana.jpg";
 import vanttec from "./vanttec.jpg";
 import grupoSSC from "./grupoSSC.png";
 import ansysInc from "./ansysInc.jpg";
+import alwayssunny from "./allwayssuny_negro.png";
+import mercalabs from "./mercalabs.png";
+import mecalabs from "./mecalabs.png";
 import collab from "./collab.png";
 import tecLogo from "./tecLogo.png";
 import proyectosAssemble from "./proyectosAssemble.png";
@@ -30,6 +33,9 @@ import Paper9 from "./Paper9.png";
 import Paper10 from "./Paper10.png";
 import Paper11 from "./Paper11.png";
 import Paper12 from "./Paper12.png";
+import heroCollage from "./hero_collage.png";
+import swarm from "./swarm.png";
+import uav from "./uav.png";
 
 // USV Boat page assets
 import boat_backdrop1 from "./boat_backdrop1.png";
@@ -50,7 +56,6 @@ import siemens from "./sponsors/siemens.png";
 import anmark3d from "./sponsors/anmark3d.png";
 import always_sunny from "./sponsors/always_sunny.png";
 import meca_labs from "./sponsors/meca_labs.png";
-import mecalabs from "./sponsors/mercalabs.png";
 
 // RESEARCH PUBLICATION IMAGES
 import papers1 from "./papers1.png"
@@ -76,6 +81,8 @@ export {
   vanttec,
   grupoSSC,
   ansysInc,
+  mercalabs,
+  alwayssunny,
   collab,
   tecLogo,
   proyectosAssemble,
@@ -107,6 +114,9 @@ export {
   anmark3d,
   always_sunny,
   meca_labs,
+  heroCollage,
+  swarm,
+  uav,
   vanttecarrow,
   papers1,
   papers2,

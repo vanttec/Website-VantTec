@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 
-import { About, Projects, Navbar, Research, Awards, Sponsors, Footer } from "./components";
-import BoatProject from "./projectsPage/BoatProject"; // Adjust path based on your folder structure
+import { About, Navbar, Research, Awards, Sponsors, Footer } from "./components";
+import BoatProject from "./projectsPage/BoatProject";
 import DroneProject from "./projectsPage/DroneProject";
 import SubmarineProject from "./projectsPage/SubmarineProject";
 import SDVProject from "./projectsPage/SDVProject";
-import InfiniteMenu from "./components/shared/InfiniteMenu";
 import ContactUs from "./components/homePage/ContactUs";
-import CalculoDeFecha from "./components/cimaPage/Calculadora";
 import FooterCIMA from "./components/cimaPage/FooterCIMA";
+import Hero from "./components/homePage/Hero";
+import Projects from "./components/homePage/Projects";
 import WhatDrivesUs from './components/homePage/WhatDrivesUs';
 
 import {
@@ -21,6 +21,7 @@ import {
   pedro,
   ana,
 } from "./assets";
+
 import HeroCIMA from "./components/cimaPage/HeroCIMA";
 import AboutCIMA from "./components/cimaPage/AboutCIMA";
 import Calculadora from "./components/cimaPage/Calculadora";
@@ -31,58 +32,19 @@ import AboutSMALC from "./components/smalcPage/AboutSMALC";
 import TestimonialsSMALC from "./components/smalcPage/TestimonialsSMALC";
 import WorkshopSMALC from "./components/smalcPage/WorkshopSMALC";
 
-
 const App = () => {
-
-  const items = [
-    {
-      image: sdv,
-      link: "/Submarine",
-      title: 'SDV',
-      description: 'Automotive excellence meets self-driving technology.'
-    },
-    {
-      image: drone,
-      link: "/Drone",
-      title: 'SWARM & UAV',
-      description: "Coordinated flight, unparalleled precision."
-    },
-    {
-      image: boat,
-      link: '/Drone',
-      title: 'USV',
-      description: 'Ready for the most unforgiving waters.'
-    },
-    {
-      image: submarine,
-      link: '/Drone',
-      title: 'UUV',
-      description: 'Conquer the greatest depths with style and SUB-stance.'
-    }
-  ];
-
   return (
-    <div className="relative z-0 bg-black">
+    <div className="relative z-0" style={{ backgroundColor: "#020B2D" }}>
       <Routes>
-        {/* Home Route */}
         <Route
           path="/"
           element={
             <div>
-              <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-                <Navbar />
-                <div
-                  className="
-                    relative
-                    h-[100vh]               /* fallback for desktop */
-                    h-[calc(var(--vh)*100)] /* perfect 100% of visible height on mobile */
-                  "
-                >
-                  <InfiniteMenu items={items} />
-                </div>
-              </div>
-              <About />
+              
+              <Navbar />
+              <Hero />
               <Projects />
+              <About />
               <WhatDrivesUs />
               <Awards />
               <Research />
@@ -91,7 +53,6 @@ const App = () => {
             </div>
           }
         />
-        {/* Boat Project Route */}
         <Route
           path="/Boat"
           element={
@@ -102,7 +63,6 @@ const App = () => {
             </div>
           }
         />
-        {/* Drone Project Route */}
         <Route
           path="/Drone"
           element={
@@ -113,7 +73,6 @@ const App = () => {
             </div>
           }
         />
-        {/* Submarine Project Route */}
         <Route
           path="/Submarine"
           element={
@@ -124,7 +83,6 @@ const App = () => {
             </div>
           }
         />
-        {/* SDV Project Route */}
         <Route
           path="/SDV"
           element={
@@ -151,7 +109,6 @@ const App = () => {
             </div>
           }
         />
-        {/* SMALC Route */}
         <Route
           path="/SMALC"
           element={
@@ -160,7 +117,7 @@ const App = () => {
               backgroundAttachment: 'fixed',
               minHeight: '100vh'
             }}>
-              <Navbar background={"bg-slate-900/95"}/>
+              <Navbar background={"bg-slate-900/95"} />
               <HeroSMALC />
               <AboutSMALC />
               <TestimonialsSMALC />
