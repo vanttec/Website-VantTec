@@ -44,7 +44,7 @@ const Hero = () => {
       </svg>
 
       <div
-        className={`relative z-10 w-full max-w-[95vw] sm:max-w-5xl lg:max-w-7xl px-0 sm:px-8 transition-opacity duration-1000 ${
+        className={`relative z-10 w-full max-w-[95vw] top-[80px] sm:max-w-5xl lg:max-w-7xl px-0 sm:px-8 transition-opacity duration-1000 ${
           visible ? "opacity-100" : "opacity-0"
         }`}
       >
