@@ -3,8 +3,9 @@ import { Routes, Route } from "react-router-dom";
 import { About, Navbar, Research, Awards, Sponsors, Footer } from "./components";
 import BoatProject from "./projectsPage/BoatProject";
 import DroneProject from "./projectsPage/DroneProject";
-import SubmarineProject from "./projectsPage/SubmarineProject";
 import SDVProject from "./projectsPage/SDVProject";
+// SubmarineProject is kept in projectsPage/ for future reuse but is not routed here.
+// Route /#/uuv (UUVPage) is the active submarine entry point.
 import ContactUs from "./components/homePage/ContactUs";
 import FooterCIMA from "./components/cimaPage/FooterCIMA";
 import Hero from "./components/homePage/Hero";
@@ -27,7 +28,7 @@ import AboutCIMA from "./components/cimaPage/AboutCIMA";
 import Calculadora from "./components/cimaPage/Calculadora";
 import MitosRealidades from "./components/cimaPage/MitosRealidades";
 import Project from "./components/cimaPage/Project";
-import UUVPage from "./pages/UUVPage";
+import UUVProject from "./projectsPage/UUVProject";
 import HeroSMALC from "./components/smalcPage/HeroSMALC";
 import AboutSMALC from "./components/smalcPage/AboutSMALC";
 import TestimonialsSMALC from "./components/smalcPage/TestimonialsSMALC";
@@ -75,17 +76,6 @@ const App = () => {
           }
         />
         <Route
-          path="/Submarine"
-          element={
-            <div>
-              <Navbar />
-              <SubmarineProject />
-            
-              <Footer />
-            </div>
-          }
-        />
-        <Route
           path="/SDV"
           element={
             <div>
@@ -100,7 +90,7 @@ const App = () => {
           element={
             <div>
               <Navbar />
-              <UUVPage />
+              <UUVProject />
               <Footer />
             </div>
           }

@@ -1,8 +1,6 @@
-import submarineImage from "../../assets/uuv.png";
-
-// TODO: Replace with the official RoboSub logo once available
-// Place the logo file in src/assets/ and update the import below
-// import robosubLogo from "../../assets/robosub logo.png";
+import uuvImage from "../../assets/uuv.png";
+// TODO: replace roboboatLogo with the official RoboSub 2026 logo when available
+import roboboatLogo from "../../assets/roboboat logo.png";
 
 const HeroUUV = () => (
     <>
@@ -10,54 +8,49 @@ const HeroUUV = () => (
             {/* Background Image */}
             <div className="absolute inset-0 w-full h-full">
                 <img
-                    src={submarineImage}
-                    alt="UUV Background"
-                    className="w-full h-full object-cover object-center" />
-                {/* Dark overlay for text readability */}
-                <div className="absolute inset-0 bg-black/50"></div>
+                    src={uuvImage}
+                    alt="VantTec UUV vehicle"
+                    className="w-full h-full object-cover object-bottom" />
+                {/* Dark overlay for better text readability */}
+                <div className="absolute inset-0 bg-black/40"></div>
             </div>
 
-            {/* Top-left Text */}
+            {/* Text Content */}
             <div className="relative z-10 max-w-7xl mx-48 pt-28">
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white text-left">
-                    Introducing our<br />unmanned underwater vehicle
+                    Introducing our<br />
+                    autonomous underwater vehicle
                 </h1>
             </div>
 
-            {/* Bottom Right: competition name + logo placeholder */}
+            {/* Bottom Right — logo */}
             <div className="relative z-10 mx-auto md:pl-44 pb-20 w-full flex justify-end">
                 <div className="flex flex-col items-start">
-                    <span className="text-2xl md:text-5xl font-semibold text-white italic mr-16">
+                    <span className="text-2xl md:text-7xl font-semibold text-white italic">
                         for
                     </span>
-                    {/*
-                      TODO: Replace the text below with the actual RoboSub logo image.
-                      Example:
-                        <img className="h-44 md:h-72 -mt-16 md:-mt-24 mr-16" src={robosubLogo} alt="robosub" />
-                    */}
-                    <span className="text-4xl md:text-7xl font-bold text-white mr-16 -mt-2">
-                        RoboSub
-                    </span>
+                    {/* TODO: replace with RoboSub 2026 official logo when available */}
+                    <img
+                        className="h-44 md:h-72 -mt-16 md:-mt-24"
+                        src={roboboatLogo}
+                        alt="RoboSub 2026" />
                 </div>
             </div>
         </section>
 
-        {/* YouTube embed — replace the src URL with the UUV video */}
-        {/* TODO: Replace the YouTube embed ID with the actual UUV competition/promo video */}
-        <div className="w-full px-8 md:px-16 py-16 bg-black/20">
-            <div className="flex justify-center">
-                <iframe
-                    width="1500"
-                    height="615"
-                    src="https://www.youtube.com/embed/sU8FpylVm00"
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="rounded-lg"
-                ></iframe>
-            </div>
+        {/* Stat Chips Row */}
+        <div className="w-full flex justify-center gap-4 py-8 bg-[#062a35]">
+            {["6 Thrusters", "ROS 2 Humble", "1 Hr Mission"].map((label) => (
+                <span
+                    key={label}
+                    className="border border-[#49C1D2]/30 bg-[#49C1D2]/10 text-[#49C1D2] font-quicksand text-xs uppercase tracking-wide px-4 py-2 rounded-full"
+                >
+                    {label}
+                </span>
+            ))}
         </div>
+
+        {/* TODO: add YouTube embed here once the UUV video URL is available */}
     </>
 );
 

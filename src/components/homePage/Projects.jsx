@@ -16,7 +16,7 @@ const projects = [
     title: "UUV",
     subtitle: "Unmanned Underwater Vehicle",
     desc: "Real students. Real machines. No waiting to graduate to make an impact.",
-    page: "/Submarine",
+    page: "/uuv",
     showButton: true,
   },
   {
