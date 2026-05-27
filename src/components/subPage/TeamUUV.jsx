@@ -8,6 +8,7 @@ import pao from "../../assets/UUV/members_uuv/pao.png";
 import sara from "../../assets/UUV/members_uuv/sara.png";
 import veronica from "../../assets/UUV/members_uuv/veronica.png";
 import yeina from "../../assets/UUV/members_uuv/yeina.png";
+import noPerson from "../../assets/icons/noPerson.png";
 
 
 const rawMembers = [
@@ -82,6 +83,7 @@ const imgByName = {
   "Verónica Paola Zapata Sánchez":    veronica,
   "Ilan David Narváez Martínez":      iian,
   "Carlos David Padrón Hernández":    null,
+  "Carlos David Padrón Hernández":    noPerson,
   "Yeina Izel González Prado":        yeina,
 };
 
