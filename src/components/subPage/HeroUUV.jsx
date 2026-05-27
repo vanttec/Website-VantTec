@@ -36,16 +36,19 @@ const HeroUUV = () => (
             </div>
         </section>
 
-        <div className="w-full aspect-video bg-black">
-            {/* TODO: replace YOUR_VIDEO_ID with actual UUV YouTube video ID
-      Example: if URL is youtube.com/watch?v=abc123, use embed/abc123 */}
-            <iframe
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-                title="UUV video"
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-            />
+        <div className="w-full px-8 md:px-16 py-16 bg-black/20">
+            <div className="flex justify-center">
+                <iframe
+                    width="1500"
+                    height="615"
+                    src="https://www.youtube.com/embed/3iM_kpgSQis?si=7s5Sz2x0mStI8fRS"
+                    title="UUV video"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="rounded-lg"
+                ></iframe>
+            </div>
         </div>
     </>
 );
