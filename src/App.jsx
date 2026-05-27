@@ -27,6 +27,7 @@ import AboutCIMA from "./components/cimaPage/AboutCIMA";
 import Calculadora from "./components/cimaPage/Calculadora";
 import MitosRealidades from "./components/cimaPage/MitosRealidades";
 import Project from "./components/cimaPage/Project";
+import UUVPage from "./pages/UUVPage";
 import HeroSMALC from "./components/smalcPage/HeroSMALC";
 import AboutSMALC from "./components/smalcPage/AboutSMALC";
 import TestimonialsSMALC from "./components/smalcPage/TestimonialsSMALC";
@@ -90,6 +91,16 @@ const App = () => {
             <div>
               <Navbar />
               <SDVProject />
+              <Footer />
+            </div>
+          }
+        />
+        <Route
+          path="/uuv"
+          element={
+            <div>
+              <Navbar />
+              <UUVPage />
               <Footer />
             </div>
           }

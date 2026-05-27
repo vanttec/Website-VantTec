@@ -1,4 +1,4 @@
-import submarineImage from "../../assets/submarine.jpg";
+import submarineImage from "../../assets/uuv.png";
 
 // TODO: Replace with the official RoboSub logo once available
 // Place the logo file in src/assets/ and update the import below
