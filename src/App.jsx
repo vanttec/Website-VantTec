@@ -79,6 +79,7 @@ const App = () => {
             <div>
               <Navbar />
               <SubmarineProject />
+            
               <Footer />
             </div>
           }
