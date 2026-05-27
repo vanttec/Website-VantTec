@@ -1,6 +1,5 @@
 import uuvImage from "../../assets/uuv.png";
-// TODO: replace roboboatLogo with the official RoboSub 2026 logo when available
-import roboboatLogo from "../../assets/roboboat logo.png";
+import robosubLogo from "../../assets/robosub-logo_vert.png";
 
 const HeroUUV = () => (
     <>
@@ -10,7 +9,7 @@ const HeroUUV = () => (
                 <img
                     src={uuvImage}
                     alt="VantTec UUV vehicle"
-                    className="w-full h-full object-cover object-bottom" />
+                    className="w-full h-full object-cover object-[50%_68%]" />
                 {/* Dark overlay for better text readability */}
                 <div className="absolute inset-0 bg-black/40"></div>
             </div>
@@ -29,28 +28,25 @@ const HeroUUV = () => (
                     <span className="text-2xl md:text-7xl font-semibold text-white italic">
                         for
                     </span>
-                    {/* TODO: replace with RoboSub 2026 official logo when available */}
                     <img
                         className="h-44 md:h-72 -mt-16 md:-mt-24"
-                        src={roboboatLogo}
+                        src={robosubLogo}
                         alt="RoboSub 2026" />
                 </div>
             </div>
         </section>
 
-        {/* Stat Chips Row */}
-        <div className="w-full flex justify-center gap-4 py-8 bg-[#062a35]">
-            {["6 Thrusters", "ROS 2 Humble", "1 Hr Mission"].map((label) => (
-                <span
-                    key={label}
-                    className="border border-[#49C1D2]/30 bg-[#49C1D2]/10 text-[#49C1D2] font-quicksand text-xs uppercase tracking-wide px-4 py-2 rounded-full"
-                >
-                    {label}
-                </span>
-            ))}
+        <div className="w-full aspect-video bg-black">
+            {/* TODO: replace YOUR_VIDEO_ID with actual UUV YouTube video ID
+      Example: if URL is youtube.com/watch?v=abc123, use embed/abc123 */}
+            <iframe
+                src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                title="UUV video"
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+            />
         </div>
-
-        {/* TODO: add YouTube embed here once the UUV video URL is available */}
     </>
 );
 

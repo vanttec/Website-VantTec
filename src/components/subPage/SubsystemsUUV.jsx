@@ -1,9 +1,17 @@
 import { useState } from "react";
+import mechCadRender from "../../assets/UUV/MECANICA/CADrender.png";
+import mechBuoyancyDiagram from "../../assets/UUV/MECANICA/Center of mass-buoyancy diagram.png";
+import mechFemStress from "../../assets/UUV/MECANICA/FEM stress analysis.png";
+import swNodeArchitecture from "../../assets/UUV/SOFTWARE/Node architecture diagram.png";
+import swYoloSimulation from "../../assets/UUV/SOFTWARE/YOLO simulation screenshot (Gazebo).jpg";
+import swSimulink from "../../assets/UUV/SOFTWARE/Simulink dynamic model diagram.png";
+import swDetectionFour from "../../assets/UUV/SOFTWARE/4.png";
+import swConfusionMatrix from "../../assets/UUV/SOFTWARE/YOLO confusion matrix.png";
+import elWiringDiagram from "../../assets/UUV/ELECTRONICA/Full electrical diagram (wiring schematic).png";
+import elExplodedView from "../../assets/UUV/ELECTRONICA/Exploded view assembly diagram.png";
+import elConnectorPhoto from "../../assets/UUV/ELECTRONICA/conexionP2.png";
+import elPCB from "../../assets/UUV/ELECTRONICA/pcb.png";
 
-/* ══════════════════════════════════════════════════════════════════
-   Diagonal visual rhythm — replicates the skewY(-3deg) pattern
-   used in src/components/boatPage/TeamUSV.jsx
-   ══════════════════════════════════════════════════════════════════ */
 
 const DiagonalBand = () => (
   <div
@@ -31,20 +39,116 @@ const BlockLabel = ({ children }) => (
   </p>
 );
 
-// w-64 on mobile (fixed width for horizontal scroll), md:w-full fills grid cell
-const ImageCard = ({ caption }) => (
-  <div className="bg-[#062a35] rounded-xl border border-[#49C1D2]/10 overflow-hidden w-64 md:w-full flex-shrink-0">
-    <div className="w-full h-48 bg-[#0491AD]/20 flex items-center justify-center">
-      {/* TODO: replace this div with <img src={ASSET} alt={caption} className="w-full h-full object-cover" /> */}
-      <span className="font-quicksand text-[#49C1D2]/30 text-xs uppercase tracking-wide text-center px-4">
-        {caption}
-      </span>
+/* ── ImageSlideshow ──────────────────────────────────────────────────
+   Glassmorphism carousel — frame style from Research.jsx.
+   One image at a time, fully visible (object-contain).
+   Responsive: same component works on mobile and desktop.
+   ─────────────────────────────────────────────────────────────────── */
+const ImageSlideshow = ({ slides }) => {
+  const [current, setCurrent] = useState(0);
+  const [failedSet, setFailedSet] = useState(new Set());
+  const total = slides.length;
+
+  if (total === 0) return null;
+
+  const prev = () => setCurrent((c) => (c - 1 + total) % total);
+  const next = () => setCurrent((c) => (c + 1) % total);
+
+  const { caption, src } = slides[current];
+  const imgOk = Boolean(src) && !failedSet.has(current);
+  const markFailed = (idx) =>
+    setFailedSet((prev) => new Set([...prev, idx]));
+
+  return (
+    <div className="w-full select-none">
+
+      {/* ── Big translucent frame ── */}
+      <div className="relative w-full h-56 md:h-[420px] rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden">
+
+        {/* Dark inner layer so images pop regardless of background */}
+        <div className="absolute inset-0 bg-[#041820]/75" />
+
+        {/* Image area — padded inset so the glassy border is visible */}
+        <div className="absolute inset-4 md:inset-8 z-10 flex items-center justify-center">
+          {imgOk ? (
+            <img
+              key={current}
+              src={src}
+              alt={caption}
+              className="w-full h-full object-contain drop-shadow-lg"
+              loading="lazy"
+              onError={() => markFailed(current)}
+            />
+          ) : (
+            <div className="flex flex-col items-center gap-3 text-center">
+              <div className="w-12 h-12 rounded-full border border-[#49C1D2]/20 flex items-center justify-center">
+                <span className="text-[#49C1D2]/30 text-xl">◻</span>
+              </div>
+              <p className="font-quicksand text-white/25 text-xs uppercase tracking-widest max-w-xs">
+                {caption}
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Slide counter — top right */}
+        {total > 1 && (
+          <div className="absolute top-3 right-3 z-20 bg-black/40 backdrop-blur-sm rounded-full px-3 py-1">
+            <span className="font-quicksand text-white/50 text-xs tracking-widest">
+              {current + 1} / {total}
+            </span>
+          </div>
+        )}
+
+        {/* Prev arrow */}
+        {total > 1 && (
+          <button
+            onClick={prev}
+            aria-label="Previous image"
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-black/40 hover:bg-[#0491AD]/60 text-white/60 hover:text-white text-2xl flex items-center justify-center transition-all duration-200 backdrop-blur-sm"
+          >
+            ‹
+          </button>
+        )}
+
+        {/* Next arrow */}
+        {total > 1 && (
+          <button
+            onClick={next}
+            aria-label="Next image"
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-black/40 hover:bg-[#0491AD]/60 text-white/60 hover:text-white text-2xl flex items-center justify-center transition-all duration-200 backdrop-blur-sm"
+          >
+            ›
+          </button>
+        )}
+      </div>
+
+      {/* Caption + dot indicators */}
+      <div className="mt-4 flex flex-col items-center gap-2.5">
+        <p className="font-quicksand text-white/40 text-xs uppercase tracking-widest text-center">
+          {caption}
+        </p>
+        {total > 1 && (
+          <div className="flex items-center gap-2">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`rounded-full transition-all duration-300 ${
+                  i === current
+                    ? "w-5 h-1.5 bg-[#49C1D2]"
+                    : "w-1.5 h-1.5 bg-white/20 hover:bg-white/40"
+                }`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
     </div>
-    <div className="px-4 py-3">
-      <p className="font-quicksand text-white/40 text-xs uppercase tracking-wide">{caption}</p>
-    </div>
-  </div>
-);
+  );
+};
 
 const SpecCard = ({ label, value }) => (
   <div className="bg-[#062a35] border border-[#49C1D2]/15 rounded-xl p-4">
@@ -98,9 +202,9 @@ const AccordionBlock = ({ items }) => {
 //   import uuvExplodedView from "../../assets/...";
 
 const mechGallery = [
-  "Full Vehicle CAD Render",
-  "FEM Stress Analysis",
-  "Exploded Assembly View",
+  { caption: "Full Vehicle CAD Render", src: mechCadRender },
+  { caption: "Center of Mass and Buoyancy", src: mechBuoyancyDiagram },
+  { caption: "FEM Stress Analysis", src: mechFemStress },
 ];
 
 const mechAccordion = [
@@ -143,11 +247,11 @@ const mechSpecs = [
 //   import uuvConfusionMatrix from "../../assets/...";
 
 const swGallery = [
-  "ROS 2 Node Architecture",
-  "YOLO Detection in Simulation",
-  "Gazebo Environment",
-  "Simulink ASMC Model",
-  "YOLO Confusion Matrix",
+  { caption: "ROS 2 Node Architecture", src: swNodeArchitecture },
+  { caption: "YOLO Simulation Screenshot", src: swYoloSimulation },
+  { caption: "Underwater Detection Box 4", src: swDetectionFour },
+  { caption: "YOLO Confusion Matrix", src: swConfusionMatrix },
+  { caption: "Simulink ASMC Model", src: swSimulink },
 ];
 
 const swAccordion = [
@@ -199,10 +303,10 @@ const swSpecs = [
 //   import uuvRack         from "../../assets/...";
 
 const elGallery = [
-  "Full Wiring Diagram",
-  "Power Distribution PCB",
-  "T200 Thruster Config",
-  "Electronics Rack",
+  { caption: "Full Wiring Diagram", src: elWiringDiagram },
+  { caption: "Power Distribution PCB", src: elPCB },
+  { caption: "Electronics Rack", src: elConnectorPhoto },
+  { caption: "Electronics Enclosure Exploded View", src: elExplodedView },
 ];
 
 const elAccordion = [
@@ -262,14 +366,7 @@ const MechanicsContent = () => (
 
     <div>
       <BlockLabel>Gallery</BlockLabel>
-      {/* Mobile — md:hidden */}
-      <div className="flex flex-nowrap overflow-x-auto gap-4 pb-2 md:hidden">
-        {mechGallery.map((cap) => <ImageCard key={cap} caption={cap} />)}
-      </div>
-      {/* Desktop — hidden md:grid */}
-      <div className="hidden md:grid grid-cols-3 gap-4">
-        {mechGallery.map((cap) => <ImageCard key={cap} caption={cap} />)}
-      </div>
+      <ImageSlideshow slides={mechGallery} />
     </div>
 
     <div>
@@ -300,23 +397,7 @@ const SoftwareContent = () => (
 
     <div>
       <BlockLabel>Gallery</BlockLabel>
-      {/* Mobile — md:hidden */}
-      <div className="flex flex-nowrap overflow-x-auto gap-4 pb-2 md:hidden">
-        {swGallery.map((cap) => <ImageCard key={cap} caption={cap} />)}
-      </div>
-      {/* Desktop — hidden md:block (first 3 in grid, last 2 centered) */}
-      <div className="hidden md:block">
-        <div className="grid grid-cols-3 gap-4">
-          {swGallery.slice(0, 3).map((cap) => <ImageCard key={cap} caption={cap} />)}
-        </div>
-        <div className="flex justify-center gap-4 mt-4">
-          {swGallery.slice(3).map((cap) => (
-            <div key={cap} className="w-1/3">
-              <ImageCard caption={cap} />
-            </div>
-          ))}
-        </div>
-      </div>
+      <ImageSlideshow slides={swGallery} />
     </div>
 
     <div>
@@ -348,14 +429,7 @@ const ElectronicsContent = () => (
 
     <div>
       <BlockLabel>Gallery</BlockLabel>
-      {/* Mobile — md:hidden */}
-      <div className="flex flex-nowrap overflow-x-auto gap-4 pb-2 md:hidden">
-        {elGallery.map((cap) => <ImageCard key={cap} caption={cap} />)}
-      </div>
-      {/* Desktop — hidden md:grid */}
-      <div className="hidden md:grid grid-cols-3 gap-4">
-        {elGallery.map((cap) => <ImageCard key={cap} caption={cap} />)}
-      </div>
+      <ImageSlideshow slides={elGallery} />
     </div>
 
     <div>
