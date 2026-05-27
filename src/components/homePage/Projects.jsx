@@ -15,7 +15,7 @@ const projects = [
     img: submarine,
     title: "UUV",
     subtitle: "Unmanned Underwater Vehicle",
-    desc: "Real students. Real machines. No waiting to graduate to make an impact.",
+    desc: "The unmanned underwater vehicle represents one of the hardest challenges we are facing. The nature of the environment enforces the dictates the development of the vehicle. We develop the logic around the limitations we have. There is no gps, no dvl, no easy test, just clever engineering.",
     page: "/Submarine",
     showButton: true,
   },
