@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-
 import { nextui } from "@nextui-org/react";
 
 const config = {
@@ -17,6 +16,16 @@ const config = {
         "black-100": "#100d25",
         "black-200": "#090325",
         "white-100": "#f3f3f3",
+        uuv: {
+          cyan:   '#49C1D2',
+          deep:   '#0491AD',
+          orange: '#F0900D',
+          amber:  '#EFA232',
+          yellow: '#E4D321',
+          fire:   '#F86515',
+          dark:   '#062a35',
+          darker: '#041820',
+        },
       },
       boxShadow: {
         card: "0px 35px 120px -15px #211e35",
@@ -28,14 +37,14 @@ const config = {
         "hero-pattern": "url('/src/assets/herobg.png')",
       },
       fontFamily: {
-        roboto: ['Roboto', 'sans-serif'],
-        nunito: ['Nunito', 'sans-serif'],
-        quicksand: ['Quicksand', 'sans-serif'],
-        montserrat: ['Montserrat', 'sans-serif'],
-        raleway: ['Raleway', 'sans-serif'],
-        urbanist: ['Urbanist', 'sans-serif'],
-        leagueSpartan: ['League Spartan', 'sans-serif'],
-        inter: ['Inter', 'sans-serif'],
+        roboto:       ['Roboto', 'sans-serif'],
+        nunito:       ['Nunito', 'sans-serif'],
+        quicksand:    ['Quicksand', 'sans-serif'],
+        montserrat:   ['Montserrat', 'sans-serif'],
+        raleway:      ['Raleway', 'sans-serif'],
+        urbanist:     ['Urbanist', 'sans-serif'],
+        leagueSpartan:['League Spartan', 'sans-serif'],
+        inter:        ['Inter', 'sans-serif'],
       }
     },
   },
