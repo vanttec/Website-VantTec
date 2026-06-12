@@ -82,7 +82,6 @@ const imgByName = {
   "Mariana Díaz Sánchez":             mariana,
   "Verónica Paola Zapata Sánchez":    veronica,
   "Ilan David Narváez Martínez":      iian,
-  "Carlos David Padrón Hernández":    null,
   "Carlos David Padrón Hernández":    noPerson,
   "Yeina Izel González Prado":        yeina,
 };
@@ -95,94 +94,100 @@ const row2 = members.slice(2, 5);
 const row3 = members.slice(5, 8);
 const row4 = members.slice(8, 11);
 
-const MemberCard = ({ name, role, linkedin, img }) => (
-  <div className="flex items-end">
+const MemberCard = ({ name, role, linkedin, img }) => {
+  const isNoPerson = img === noPerson;
+  return (
+    <div className="flex items-end">
 
-    {/* Vertical text block — desktop only */}
-    <div
-      className="hidden md:flex flex-col justify-end pb-10 mr-1 shrink-0"
-      style={{ writingMode: "vertical-lr" }}
-    >
-      <span className="text-white font-quicksand font-bold text-sm whitespace-nowrap">
-        {name}
-      </span>
-      <span className="text-[#49C1D2]/70 font-quicksand text-xs whitespace-nowrap mt-1">
-        {role}
-      </span>
-      <a
-        href={linkedin}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-[#F0900D] font-quicksand text-xs mt-2 hover:text-[#EFA232] transition-colors duration-200 whitespace-nowrap"
-        aria-label={`LinkedIn profile of ${name}`}
+      {/* Vertical text block — desktop only */}
+      <div
+        className="hidden md:flex flex-col justify-end pb-10 mr-1 shrink-0"
+        style={{ writingMode: "vertical-lr" }}
       >
-        LinkedIn
-      </a>
-    </div>
+        <span className="text-white font-quicksand font-bold text-sm whitespace-nowrap">
+          {name}
+        </span>
+        <span className="text-[#49C1D2]/70 font-quicksand text-xs whitespace-nowrap mt-1">
+          {role}
+        </span>
+        <a
+          href={linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#F0900D] font-quicksand text-xs mt-2 hover:text-[#EFA232] transition-colors duration-200 whitespace-nowrap"
+          aria-label={`LinkedIn profile of ${name}`}
+        >
+          LinkedIn
+        </a>
+      </div>
 
-    {/* Photo */}
-    <div className="relative overflow-hidden w-88 h-52 sm:w-88 sm:h-60 md:w-60 md:h-64 lg:w-72 lg:h-72 shrink-0">
-      {img ? (
-        <img
-          src={img}
-          alt={name}
-          className="w-full h-full object-cover object-top grayscale"
-        />
-      ) : (
-        <div className="w-full h-full bg-[#0491AD]/20 flex items-center justify-center">
-          <span className="font-quicksand text-[#49C1D2]/30 text-xs uppercase tracking-widest text-center px-4">
-            Photo<br />coming soon
-          </span>
-        </div>
-        // TODO: replace null img with imported photo for {name}
-      )}
-    </div>
-
-  </div>
-);
-
-const MobileCard = ({ name, role, linkedin, img }) => (
-  <div className="flex flex-col items-center">
-
-    {/* Photo */}
-    <div className="relative overflow-hidden w-36 h-48 sm:w-44 sm:h-56 rounded-sm">
-      {img ? (
-        <img
-          src={img}
-          alt={name}
-          className="w-full h-full object-cover object-top grayscale"
-        />
-      ) : (
-        <div className="w-full h-full bg-[#0491AD]/20 flex items-center justify-center rounded-sm">
-          <span className="font-quicksand text-[#49C1D2]/30 text-[10px] uppercase tracking-widest text-center px-2">
-            Photo<br />coming soon
-          </span>
-        </div>
-        // TODO: replace null img with imported photo for {name}
-      )}
-    </div>
-
-    {/* Text below photo */}
-    <div className="mt-3 text-center px-1">
-      <p className="text-white font-quicksand font-bold text-xs leading-tight">
-        {name}
-      </p>
-      <p className="text-[#49C1D2]/70 font-quicksand text-[10px] mt-0.5">
-        {role}
-      </p>
-      <a
-        href={linkedin}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block text-[#F0900D] font-quicksand text-[10px] mt-1 hover:text-[#EFA232] transition-colors duration-200"
-        aria-label={`LinkedIn profile of ${name}`}
+      {/* Photo */}
+      <div
+        className={`relative overflow-hidden ${isNoPerson ? 'w-96 h-64 sm:w-96 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 z-30 -translate-y-3' : 'w-88 h-52 sm:w-88 sm:h-60 md:w-60 md:h-64 lg:w-72 lg:h-72'} shrink-0`}
       >
-        LinkedIn
-      </a>
-    </div>
+        {img ? (
+          <img
+            src={img}
+            alt={name}
+            className={`w-full h-full object-cover object-top grayscale ${isNoPerson ? 'scale-105' : ''}`}
+          />
+        ) : (
+          <div className="w-full h-full bg-[#0491AD]/20 flex items-center justify-center">
+            <span className="font-quicksand text-[#49C1D2]/30 text-xs uppercase tracking-widest text-center px-4">
+              Photo<br />coming soon
+            </span>
+          </div>
+        )}
+      </div>
 
-  </div>
-);
+    </div>
+  );
+}
+
+const MobileCard = ({ name, role, linkedin, img }) => {
+  const isNoPerson = img === noPerson;
+  return (
+    <div className="flex flex-col items-center">
+
+      {/* Photo */}
+      <div className={`relative overflow-hidden ${isNoPerson ? 'w-44 h-64 sm:w-52 sm:h-72 -translate-y-2 z-30' : 'w-36 h-48 sm:w-44 sm:h-56'} rounded-sm`}>
+        {img ? (
+          <img
+            src={img}
+            alt={name}
+            className={`w-full h-full object-cover object-top grayscale ${isNoPerson ? 'scale-105' : ''}`}
+          />
+        ) : (
+          <div className="w-full h-full bg-[#0491AD]/20 flex items-center justify-center rounded-sm">
+            <span className="font-quicksand text-[#49C1D2]/30 text-[10px] uppercase tracking-widest text-center px-2">
+              Photo<br />coming soon
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Text below photo */}
+      <div className="mt-3 text-center px-1">
+        <p className="text-white font-quicksand font-bold text-xs leading-tight">
+          {name}
+        </p>
+        <p className="text-[#49C1D2]/70 font-quicksand text-[10px] mt-0.5">
+          {role}
+        </p>
+        <a
+          href={linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block text-[#F0900D] font-quicksand text-[10px] mt-1 hover:text-[#EFA232] transition-colors duration-200"
+          aria-label={`LinkedIn profile of ${name}`}
+        >
+          LinkedIn
+        </a>
+      </div>
+
+    </div>
+  );
+}
 
 const DiagonalBand = ({ color, opacity }) => (
   <div
