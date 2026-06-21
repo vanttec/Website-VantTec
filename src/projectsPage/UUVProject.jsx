@@ -11,9 +11,9 @@ const UUVProject = () => {
       <HeroUUV />
       <SubsystemsUUV />
       <TestingUUV />
+      <TDRDownloadUUV />
       <TeamUUV />
       <SponsorsUUV />
-      <TDRDownloadUUV />
     </div>
   );
 };

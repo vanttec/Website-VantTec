@@ -1,90 +1,114 @@
-// Structure mirrors src/components/boatPage/SponsorsUSV.jsx:
-// full-width section → absolute overlay → relative z-10 content block.
+﻿import { useState } from "react";
 
-const TDRDownloadUUV = () => (
-  <section
-    className="relative w-full py-20 md:py-32 bg-cover bg-center bg-no-repeat bg-[#0491AD]"
+const PDF_PATH = "public/sub/RS26_TDR_Tec_de_Monterrey.pdf";
+
+const OptionsDropdown = ({ onClose }) => (
+  <div
+    className="absolute right-0 mt-3 top-full z-50 bg-[#062a35] border border-[#49C1D2]/20 rounded-xl overflow-hidden shadow-xl w-56"
+    role="menu"
   >
-    {/* TODO: add backgroundImage like SponsorsUSV when UUV backdrop asset is available */}
-
-    {/* Dark overlay — bg-black/30 (lighter than sponsors: this is a CTA) */}
-    <div className="absolute inset-0 bg-black/30" />
-
-    <div className="relative z-10 px-8 md:px-16 max-w-6xl mx-auto">
-
-      {/* ── Desktop layout — hidden md:flex ── */}
-      <div className="hidden md:flex flex-row justify-between items-center gap-16">
-
-        {/* Left: title block */}
-        <div>
-          <p className="font-quicksand text-white/60 text-xs uppercase tracking-[0.2em] mb-3">
-            Technical Documentation
-          </p>
-          <h2 className="font-quicksand text-white text-4xl md:text-5xl font-bold">
-            Technical Design Report
-          </h2>
-          <p className="font-quicksand text-white/60 text-lg mt-3">
-            Full vehicle design, testing strategy, and system architecture
-          </p>
-          <p className="font-quicksand text-white/40 text-sm mt-1">
-            RoboSub 2026 — VantTec, Tecnológico de Monterrey
-          </p>
-        </div>
-
-        {/* Right: download button */}
-        <div className="shrink-0">
-          <a
-            href="#"
-            aria-label="Download Technical Design Report PDF"
-          >
-            {/* TODO: replace href="#" with actual TDR PDF path when uploaded */}
-            <button
-              className="bg-[#F0900D] hover:bg-[#F86515] text-white font-quicksand font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full transition-colors duration-200"
-            >
-              Download TDR →
-            </button>
-          </a>
-        </div>
-
+    <a
+      href={PDF_PATH}
+      target="_blank"
+      rel="noopener noreferrer"
+      role="menuitem"
+      onClick={onClose}
+      className="flex items-center gap-3 px-5 py-4 hover:bg-[#0491AD]/30 transition-colors duration-150 border-b border-[#49C1D2]/10 group"
+    >
+      <span className="text-[#49C1D2] text-base">&#8599;</span>
+      <div>
+        <p className="font-urbanist text-white text-sm font-bold">View Online</p>
+        <p className="font-urbanist text-white/40 text-xs mt-0.5">Opens in a new tab</p>
       </div>
+    </a>
 
-      {/* ── Mobile layout — md:hidden ── */}
-      <div className="md:hidden flex flex-col text-center gap-8">
-
-        {/* Title block */}
-        <div>
-          <p className="font-quicksand text-white/60 text-xs uppercase tracking-[0.2em] mb-3">
-            Technical Documentation
-          </p>
-          <h2 className="font-quicksand text-white text-4xl font-bold">
-            Technical Design Report
-          </h2>
-          <p className="font-quicksand text-white/60 text-lg mt-3">
-            Full vehicle design, testing strategy, and system architecture
-          </p>
-          <p className="font-quicksand text-white/40 text-sm mt-1">
-            RoboSub 2026 — VantTec, Tecnológico de Monterrey
-          </p>
-        </div>
-
-        {/* Download button — full width on mobile */}
-        <a
-          href="#"
-          aria-label="Download Technical Design Report PDF"
-          className="w-full"
-        >
-          {/* TODO: replace href="#" with actual TDR PDF path when uploaded */}
-          <button
-            className="w-full bg-[#F0900D] hover:bg-[#F86515] text-white font-quicksand font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full transition-colors duration-200"
-          >
-            Download TDR →
-          </button>
-        </a>
-
+    
+      <a
+        href={PDF_PATH}
+        download="TDR_VantTec_UUV_RoboSub2026.pdf"
+        role="menuitem"
+        onClick={onClose}
+        className="flex items-center gap-3 px-5 py-4 hover:bg-[#0491AD]/30 transition-colors duration-150 group"
+      >
+      <span className="text-[#F0900D] text-base">&#8595;</span>
+      <div>
+        <p className="font-urbanist text-white text-sm font-bold">Download PDF</p>
+        <p className="font-urbanist text-white/40 text-xs mt-0.5">Saves to your device</p>
       </div>
-
-    </div>
-  </section>
+    </a>
+  </div>
 );
+
+const TDRDownloadUUV = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <section className="relative w-full py-20 md:py-32 bg-[#0491AD] overflow-hidden">
+      <div className="absolute inset-0 bg-black/30" />
+
+      <div className="relative z-10 px-8 md:px-16 max-w-6xl mx-auto">
+
+        {/* MOBILE */}
+        <div className="flex flex-col items-center text-center gap-8 md:hidden">
+          <div>
+            <p className="font-quicksand text-white/60 text-xs uppercase tracking-[0.2em] mb-3">
+              Technical Documentation
+            </p>
+            <h2 className="font-urbanist text-white font-bold text-3xl leading-tight">
+              Technical Design Report
+            </h2>
+            <p className="font-urbanist text-white/60 text-sm mt-3">
+              Full vehicle design, testing strategy, and system architecture
+            </p>
+            <p className="font-urbanist text-white/40 text-xs mt-1">
+              RoboSub 2026 — VantTec, Tecnológico de Monterrey
+            </p>
+          </div>
+          <div className="relative flex flex-col items-center">
+            <button
+              onClick={() => setOpen((prev) => !prev)}
+              aria-expanded={open}
+              aria-label="Open TDR options"
+              className="bg-[#F0900D] hover:bg-[#F86515] text-white font-urbanist font-bold text-sm uppercase tracking-widest px-10 py-4 rounded-full transition-colors duration-200"
+            >
+              {open ? "Close" : "Access TDR"}
+            </button>
+            {open && <OptionsDropdown onClose={() => setOpen(false)} />}
+          </div>
+        </div>
+
+        {/* DESKTOP */}
+        <div className="hidden md:flex flex-row justify-between items-center gap-16">
+          <div>
+            <p className="font-quicksand text-white/60 text-xs uppercase tracking-[0.2em] mb-3">
+              Technical Documentation
+            </p>
+            <h2 className="font-urbanist text-white font-bold text-4xl md:text-5xl leading-tight">
+              Technical Design Report
+            </h2>
+            <p className="font-urbanist text-white/60 text-lg mt-3">
+              Full vehicle design, testing strategy, and system architecture
+            </p>
+            <p className="font-urbanist text-white/40 text-sm mt-1">
+              RoboSub 2026 — VantTec, Tecnológico de Monterrey
+            </p>
+          </div>
+          <div className="relative flex-shrink-0">
+            <button
+              onClick={() => setOpen((prev) => !prev)}
+              aria-expanded={open}
+              aria-label="Open TDR options"
+              className="bg-[#F0900D] hover:bg-[#F86515] text-white font-urbanist font-bold text-sm uppercase tracking-widest px-10 py-5 rounded-full transition-colors duration-200 whitespace-nowrap"
+            >
+              {open ? "Close" : "Access TDR"}
+            </button>
+            {open && <OptionsDropdown onClose={() => setOpen(false)} />}
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
 
 export default TDRDownloadUUV;
