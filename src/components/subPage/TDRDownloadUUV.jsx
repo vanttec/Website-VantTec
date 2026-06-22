@@ -1,6 +1,6 @@
 ﻿import { useState } from "react";
 
-const PDF_PATH = "public/sub/RS26_TDR_Tec_de_Monterrey.pdf";
+const PDF_PATH = "/sub/RS26_TDR_Tec_de_Monterrey.pdf";
 
 const OptionsDropdown = ({ onClose }) => (
   <div
