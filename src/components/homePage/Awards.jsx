@@ -14,7 +14,7 @@ const stats = [
   },
   {
     icon: trophyIcon,
-    value: '18',
+    value: '20',
     label: 'International Awards',
     bg: 'bg-[#393780]',
   },
@@ -26,7 +26,7 @@ const stats = [
   },
   {
     icon: medalIcon,
-    value: '7',
+    value: '8',
     label: 'International Competitions',
     bg: 'bg-[#1C4289]',
   },
