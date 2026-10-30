@@ -8,6 +8,26 @@ import {
   pedro,
   ana,
 } from "../assets";
+import {
+  faFacebook,
+  faYoutube,
+  faGithub,
+  faInstagram,
+  faXTwitter,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
+
+// Team contact info, shared by ContactUs and Footer so every page shows the same channels
+export const contactEmail = "vanttec@servicios.tec.mx";
+
+export const socialLinks = [
+  { name: "Facebook", href: "https://www.facebook.com/VantTec", icon: faFacebook },
+  { name: "YouTube", href: "https://www.youtube.com/@vanttecmty", icon: faYoutube },
+  { name: "GitHub", href: "https://github.com/vanttec", icon: faGithub },
+  { name: "Instagram", href: "https://www.instagram.com/vanttec/", icon: faInstagram },
+  { name: "X (Twitter)", href: "https://twitter.com/vantTECmx", icon: faXTwitter },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/vanttec", icon: faLinkedin },
+];
 
 export const navLinks = [
   {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faInstagram, faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import TecLogo from '../assets/tecLogo.png'; // adjust filename
+import { socialLinks } from '../constants';
 
 const Footer = () => {
     return (
@@ -21,21 +21,11 @@ const Footer = () => {
                 <div className="flex flex-col items-center gap-3">
                     <p className="font-bold text-sm">Social Media</p>
                     <div className="flex flex-row gap-4">
-                        <a href='https://www.facebook.com/VantTec' target='_blank' rel='noopener noreferrer'>
-                            <FontAwesomeIcon icon={faFacebook} size='2x' />
-                        </a>
-                        <a href='https://www.youtube.com/@vanttecmty' target='_blank' rel='noopener noreferrer'>
-                            <FontAwesomeIcon icon={faYoutube} size='2x' />
-                        </a>
-                        <a href='https://github.com/vanttec' target='_blank' rel='noopener noreferrer'>
-                            <FontAwesomeIcon icon={faGithub} size='2x' />
-                        </a>
-                        <a href='https://www.instagram.com/vanttec/' target='_blank' rel='noopener noreferrer'>
-                            <FontAwesomeIcon icon={faInstagram} size='2x' />
-                        </a>
-                        <a href='https://twitter.com/vantTECmx' target='_blank' rel='noopener noreferrer'>
-                            <FontAwesomeIcon icon={faTwitter} size='2x' />
-                        </a>
+                        {socialLinks.map(({ name, href, icon }) => (
+                            <a key={name} href={href} target='_blank' rel='noopener noreferrer' aria-label={`VantTec on ${name}`}>
+                                <FontAwesomeIcon icon={icon} size='2x' />
+                            </a>
+                        ))}
                     </div>
                 </div>
 

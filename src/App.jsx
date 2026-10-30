@@ -61,7 +61,7 @@ const App = () => {
             <div>
               <Navbar />
               <BoatProject />
-              <Footer />
+              <ContactUs fadeFrom="#000" />
             </div>
           }
         />

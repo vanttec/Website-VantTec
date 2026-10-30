@@ -21,6 +21,9 @@ const SponsorsUSV = () => (
     {/* Dark overlay */}
     <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
+    {/* Bottom fade — hands off to the black top edge of ContactUs */}
+    <div className="absolute inset-x-0 bottom-0 h-32 md:h-48 bg-gradient-to-b from-transparent to-black pointer-events-none" />
+
     <div className="relative z-10 px-8 md:px-16 max-w-6xl mx-auto">
       {/* Heading */}
       <div className="text-center mb-16 md:mb-20">
