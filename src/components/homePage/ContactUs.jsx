@@ -109,7 +109,7 @@ const ContactUs = ({ fadeFrom = '#010521' }) => {
                         <div className="flex flex-row gap-4">
                             {socialLinks.map(({ name, href, icon }) => (
                                 <a key={name} href={href} target='_blank' rel='noopener noreferrer' aria-label={`VantTec on ${name}`}>
-                                    <FontAwesomeIcon icon={icon} size='2x' className="text-white hover:text-gray-300 hover:-translate-y-0.5 transition-all duration-300" />
+                                    <FontAwesomeIcon icon={icon} size='2x' aria-hidden='true' className="text-white hover:text-gray-300 hover:-translate-y-0.5 transition-all duration-300" />
                                 </a>
                             ))}
                         </div>

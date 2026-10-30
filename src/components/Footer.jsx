@@ -23,7 +23,7 @@ const Footer = () => {
                     <div className="flex flex-row gap-4">
                         {socialLinks.map(({ name, href, icon }) => (
                             <a key={name} href={href} target='_blank' rel='noopener noreferrer' aria-label={`VantTec on ${name}`}>
-                                <FontAwesomeIcon icon={icon} size='2x' />
+                                <FontAwesomeIcon icon={icon} size='2x' aria-hidden='true' />
                             </a>
                         ))}
                     </div>
