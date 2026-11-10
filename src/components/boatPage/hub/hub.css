@@ -1,0 +1,700 @@
+/* USV hub. Everything that moves here animates only transform or opacity,
+   which the browser can run on the GPU without redoing page layout. */
+
+.hub {
+  --lit: #7ad6cb;
+  --band: #427175;
+  --seam: #102a30;
+  --ink: #f3f3f3;
+  --muted: #aaa6c3;
+  --hair: rgba(243, 243, 243, 0.12);
+  --amber: #efa232;
+  --port: #ff6b6b;
+  --star: #4ade80;
+  --panel: #100d25;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* A damped spring sampled into CSS, with a soft 8% overshoot. */
+  --spring: linear(0, 0.094, 0.3, 0.533, 0.741, 0.9, 1.004, 1.061, 1.082, 1.08, 1.065, 1.046,
+    1.027, 1.012, 1.002, 0.996, 0.993, 0.993, 0.994, 0.996, 1);
+  --cut: 5.24vw; /* tan(3deg): the same angle as the Team section's bands */
+
+  position: relative;
+  z-index: 1;
+  background: #050816;
+  color: var(--ink);
+  padding-block: clamp(3rem, 7vw, 6rem) clamp(4rem, 9vw, 7rem);
+}
+
+/* Diagonal seam into the section above. clip-path paints once and stays static. */
+.hub-edge {
+  position: absolute;
+  inset-inline: 0;
+  bottom: calc(100% - 1px);
+  height: calc(var(--cut) + 12px);
+  background: #050816;
+  clip-path: polygon(0 calc(100% - 1px), 100% 12px, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+.hub-edge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--seam);
+}
+.hub-edge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #050816;
+  clip-path: polygon(0 calc(100% + 16px), 100% 28px, 100% 100%, 0 100%);
+}
+
+.hub-wrap {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 4rem);
+}
+
+/* ---- Shared type ---- */
+
+.hub-eyebrow,
+.hub-title,
+.hub-subtitle,
+.hub-event-title,
+.course-year,
+.course-year-vehicle,
+.odo,
+.odo *,
+.course-vehicle,
+.log-year,
+.log-tab span,
+.fleet-name,
+.fleet-year-num,
+.hub-res-title {
+  font-family: "Quicksand", "Nunito", sans-serif;
+}
+
+.hub-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+.hub-eyebrow {
+  color: var(--lit);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.hub-title {
+  font-size: clamp(2.125rem, 6vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.08;
+}
+.hub-subtitle {
+  font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+/* ---- Shared event block ---- */
+
+.hub-event + .hub-event {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--hair);
+}
+.hub-event-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.hub-event-meta {
+  color: var(--lit);
+  font-size: 0.875rem;
+  margin-top: 0.15rem;
+}
+.hub-event-detail {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.55;
+  margin-top: 0.45rem;
+  max-width: 38rem;
+}
+.hub-awards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+  list-style: none;
+}
+.hub-award {
+  color: var(--amber);
+  border: 1px solid rgba(239, 162, 50, 0.4);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 0.3rem 0.65rem;
+}
+
+/* ---- Link: an underline sweep and an arrow nudge ---- */
+
+.hub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  margin-top: 0.4rem;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  border-radius: 6px;
+}
+.hub-link-text {
+  position: relative;
+  padding-block: 0.15rem;
+}
+.hub-link-text::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--lit);
+  transform: scaleX(0.28);
+  transform-origin: left;
+  transition: transform 0.45s var(--ease-out);
+}
+.hub-link-arrow {
+  flex: none;
+  color: var(--lit);
+  transition: transform 0.35s var(--ease-out);
+}
+/* Hover only on devices that truly hover, or touch screens get stuck states. */
+@media (hover: hover) {
+  .hub-link:hover .hub-link-text::after { transform: scaleX(1); }
+  .hub-link:hover .hub-link-arrow,
+  .hub-res:hover .hub-link-arrow { transform: translate(3px, -3px); }
+  .hub-res:hover { border-color: rgba(122, 214, 203, 0.55); transform: translateY(-3px); }
+}
+.hub a:focus-visible,
+.hub button:focus-visible {
+  outline: 2px solid var(--lit);
+  outline-offset: 3px;
+}
+
+/* ---- Reveal on first view (the class is added by useReveal) ---- */
+
+.hub-reveal {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition: opacity 0.6s ease, transform 0.8s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.hub-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Resources ---- */
+
+.hub-resources { margin-top: clamp(3.5rem, 8vw, 6rem); }
+.hub-res-grid {
+  display: grid;
+  gap: 0.875rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  list-style: none;
+}
+.hub-res-grid > li { display: flex; }
+.hub-res {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.35rem;
+  background: var(--panel);
+  border: 1px solid var(--hair);
+  border-radius: 14px;
+  transition: border-color 0.3s ease, transform 0.45s var(--ease-out);
+}
+.hub-res-icon { color: var(--lit); font-size: 1.125rem; line-height: 1; margin-bottom: 0.85rem; }
+.hub-res-icon * { color: inherit; }
+.hub-res-title { color: var(--ink); font-size: 1.125rem; font-weight: 700; }
+.hub-res-desc { color: var(--muted); font-size: 0.9375rem; line-height: 1.5; margin-top: 0.3rem; }
+.hub-res-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+/* ---- A: The Course ---- */
+
+.course { display: grid; gap: 3rem; }
+
+.course-aside { display: none; }
+.course-instrument { position: sticky; top: 7.5rem; }
+.course-label {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.odo {
+  display: flex;
+  color: var(--ink);
+  font-size: clamp(4.5rem, 8.5vw, 7rem);
+  font-weight: 700;
+  line-height: 1;
+  margin-top: 0.5rem;
+}
+.odo-digit {
+  display: block;
+  width: 0.66em;
+  height: 1em;
+  line-height: 1;
+  text-align: center;
+}
+.odo-window { display: block; height: 1em; overflow: hidden; }
+.odo-column {
+  display: block;
+  /* The spring easing makes the digit settle instead of stopping dead. */
+  transition: transform 0.7s var(--spring);
+}
+.course-vehicle {
+  color: var(--lit);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 0.75rem;
+}
+.course-count {
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  margin-top: 0.3rem;
+}
+
+.course-list {
+  position: relative;
+  list-style: none;
+  min-width: 0;
+}
+.course-rail-holder {
+  position: absolute;
+  /* Paint the moving layers last. If content painted above them, the browser
+     would have to promote every stop to its own GPU layer as well. */
+  z-index: 1;
+  inset: 0 auto 0 0;
+  width: 36px;
+  pointer-events: none;
+}
+.course-rail {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 100%;
+  overflow: hidden;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='120'%3E%3Cpath d='M18 0C24.67 20 24.67 40 18 60S11.33 100 18 120' fill='none' stroke='%237ad6cb' stroke-width='2.25'/%3E%3C/svg%3E") 0 0 / 36px 120px repeat-y;
+}
+/* Slides down to uncover the bright line. It must match the section background. */
+.course-rail-cover {
+  position: absolute;
+  inset: 0;
+  background: #050816;
+  will-change: transform;
+}
+.course-rail::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='120'%3E%3Cpath d='M18 0C24.67 20 24.67 40 18 60S11.33 100 18 120' fill='none' stroke='%23aaa6c3' stroke-opacity='.28' stroke-width='2' stroke-dasharray='2 7' stroke-linecap='round'/%3E%3C/svg%3E") 0 0 / 36px 120px repeat-y;
+}
+.course-boat {
+  position: absolute;
+  top: 0;
+  left: 18px;
+  width: 22px;
+  height: 30px;
+  margin: -15px 0 0 -11px;
+  color: var(--ink);
+  will-change: transform;
+}
+.course-boat-mark { position: relative; display: block; width: 100%; height: 100%; }
+.course-boat-halo {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(122, 214, 203, 0.34), rgba(122, 214, 203, 0));
+}
+
+.course-stop {
+  position: relative;
+  min-height: 7.5rem;
+  padding: 0 0 clamp(2.75rem, 6vw, 4rem) 3.5rem;
+}
+.course-stop:last-child { padding-bottom: 0; min-height: 0; }
+
+.course-gate {
+  position: absolute;
+  z-index: 2; /* above the rail's cover, or upcoming buoys would be hidden */
+  top: 20px;
+  left: 18px;
+  transform: translate3d(var(--gate-x, 0), 0, 0);
+}
+.course-buoy {
+  position: absolute;
+  top: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2a2c44;
+  transition: background-color 0.3s ease;
+}
+.course-buoy-port { left: -18px; }
+.course-buoy-star { left: 8px; }
+.course-buoy::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  opacity: 0;
+}
+.course-buoy-port { color: var(--port); }
+.course-buoy-star { color: var(--star); }
+.course-stop:not([data-state="ahead"]) .course-buoy { background: currentColor; }
+.course-stop[data-state="current"] .course-buoy::after {
+  animation: course-ping 0.9s var(--ease-out) both;
+}
+@keyframes course-ping {
+  from { opacity: 0.9; transform: scale(1); }
+  to { opacity: 0; transform: scale(3.2); }
+}
+
+.course-year {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.75rem;
+  color: var(--ink);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  line-height: 40px;
+  margin-bottom: 0.4rem;
+  transition: color 0.35s ease;
+}
+.course-stop[data-state="ahead"] .course-year { color: #777391; }
+.course-stop[data-state="current"] .course-year { color: var(--lit); }
+.course-year-vehicle {
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+@media (min-width: 1024px) {
+  .course { grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); }
+  .course-aside { display: block; }
+}
+
+/* ---- B: The Logbook ---- */
+
+.log-ruler {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+  padding-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+.log-track {
+  position: absolute;
+  top: 0.75rem;
+  inset-inline: 0;
+  height: 2px;
+  background: var(--hair);
+}
+.log-track-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--lit);
+  transform-origin: left;
+  /* Percentages and --i do the positioning, so no JS measures anything. */
+  transform: scaleX(calc((var(--i) + 0.5) / var(--n)));
+  transition: transform 0.55s var(--ease-out);
+}
+.log-marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% / var(--n));
+  height: 1.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  transform: translate3d(calc(var(--i) * 100%), 0, 0);
+  transition: transform 0.6s var(--spring);
+  pointer-events: none;
+}
+.log-marker-boat {
+  width: 16px;
+  height: 22px;
+  transform: rotate(-90deg);
+}
+.log-tab {
+  min-height: 48px;
+  color: var(--muted);
+  background: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+.log-tab span { font-size: 0.8125rem; font-weight: 700; }
+.log-tab[aria-selected="true"] { color: var(--lit); }
+.log-tab[aria-selected="true"] span { color: inherit; }
+.log-tab-full { display: none; }
+@media (hover: hover) { .log-tab:hover { color: var(--ink); } }
+
+.log-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--hair);
+  border-radius: 18px;
+  /* Vertical swipes stay native page scroll; only horizontal ones are ours. */
+  touch-action: pan-y;
+}
+.log-contours {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--band);
+  opacity: 0.32;
+  pointer-events: none;
+}
+.log-panels {
+  position: relative;
+  display: grid;
+}
+.log-panel {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: clamp(1.35rem, 4vw, 3rem);
+  transition: opacity 0.3s ease, transform 0.55s var(--ease-out), visibility 0s linear 0.3s;
+}
+.log-panel[data-state="active"] {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition: opacity 0.35s ease 0.08s, transform 0.55s var(--ease-out) 0.04s, visibility 0s;
+}
+.log-panel[data-state="before"] { opacity: 0; visibility: hidden; transform: translate3d(-36px, 0, 0); }
+.log-panel[data-state="after"] { opacity: 0; visibility: hidden; transform: translate3d(36px, 0, 0); }
+
+.log-year {
+  color: var(--ink);
+  font-size: clamp(4rem, 15vw, 7.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+}
+.log-vehicle {
+  color: var(--lit);
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-top: 0.4rem;
+}
+.log-empty { color: var(--muted); font-size: 1rem; line-height: 1.55; }
+.log-body { display: flex; flex: 1; flex-direction: column; min-width: 0; }
+.log-report { margin-top: auto; padding-top: 0.75rem; }
+.log-empty + .log-report { margin-top: 0; }
+.log-photo {
+  position: relative;
+  flex: 1;
+  min-height: 7rem;
+  margin: 1rem 0 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.log-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.log-controls {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0.75rem 0.6rem clamp(1.35rem, 4vw, 3rem);
+  border-top: 1px solid var(--hair);
+}
+.log-count { color: var(--muted); font-size: 0.875rem; font-variant-numeric: tabular-nums; }
+.log-arrows { display: flex; gap: 0.35rem; }
+.log-arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--ink);
+  background: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.25s ease, opacity 0.25s ease;
+}
+.log-arrow:disabled { opacity: 0.3; cursor: default; }
+.log-arrow svg { transition: transform 0.2s var(--ease-out); }
+.log-arrow:active:not(:disabled) svg { transform: scale(0.82); }
+@media (hover: hover) { .log-arrow:hover:not(:disabled) { background: var(--hair); } }
+
+@media (min-width: 640px) {
+  .log-tab-short { display: none; }
+  .log-tab-full { display: inline; }
+  .log-tab span { font-size: 0.9375rem; }
+}
+@media (min-width: 900px) {
+  .log-panel { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3rem; }
+}
+
+/* ---- C: The Fleet ---- */
+
+.fleet { list-style: none; }
+.fleet-slot {
+  position: sticky;
+  /* useScrollFrame sets the real value; this is the no-JS fallback. */
+  top: 6rem;
+  margin-bottom: clamp(2rem, 8vh, 5rem);
+}
+.fleet-slot:last-child { margin-bottom: 0; }
+
+.fleet-card {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #0f2329;
+  /* Own GPU layer: scaling reuses the painted card instead of repainting it. */
+  will-change: transform, opacity;
+}
+.fleet-card-s3 { background: #14323a; }
+.fleet-card-s4 { background: #1c424a; }
+
+.fleet-photo { margin: 0; }
+.fleet-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.fleet-intro { padding: clamp(1.35rem, 4vw, 3rem) clamp(1.35rem, 4vw, 3rem) 0; min-width: 0; }
+.fleet-log { padding: 1.5rem clamp(1.35rem, 4vw, 3rem) clamp(0.75rem, 2vw, 1.5rem); min-width: 0; }
+.fleet-span {
+  color: var(--lit);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.fleet-name {
+  color: var(--ink);
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.05;
+  margin-top: 0.3rem;
+}
+.fleet-summary { color: #c9d6d8; font-size: 1.0625rem; line-height: 1.5; margin-top: 0.6rem; }
+.fleet-years { list-style: none; }
+.fleet-year:first-child { border-top: 0; padding-top: 0; }
+.fleet-year {
+  display: grid;
+  gap: 0.35rem 1.5rem;
+  padding-block: 1.1rem;
+  border-top: 1px solid var(--hair);
+}
+.fleet-year-num { color: var(--ink); font-size: 1.5rem; font-weight: 700; line-height: 1.15; }
+.fleet-year-vehicle { color: #c9d6d8; font-size: 0.875rem; }
+.fleet-year-body { min-width: 0; }
+.fleet-card .hub-event-detail { color: #c9d6d8; }
+.fleet-dim {
+  position: absolute;
+  inset: 0;
+  background: #050816;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .fleet-year { grid-template-columns: 6.5rem minmax(0, 1fr); }
+}
+@media (min-width: 1024px) {
+  .fleet-card {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-rows: auto 1fr;
+  }
+  .fleet-photo { grid-area: 1 / 1; }
+  .fleet-intro { grid-area: 2 / 1; padding-bottom: clamp(1.35rem, 4vw, 3rem); }
+  .fleet-log { grid-area: 1 / 2 / span 2 / auto; padding-top: clamp(1.35rem, 3vw, 2.25rem); }
+}
+
+/* ---- Design picker, development only ---- */
+
+.hub-picker {
+  position: sticky;
+  bottom: 1rem;
+  z-index: 15;
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+  pointer-events: none;
+}
+.hub-picker-inner {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  background: rgba(16, 13, 37, 0.94);
+  border: 1px solid var(--hair);
+  border-radius: 999px;
+  pointer-events: auto;
+}
+.hub-picker button {
+  min-height: 40px;
+  padding: 0 0.95rem;
+  color: var(--muted);
+  background: none;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.hub-picker button[aria-pressed="true"] { color: #050816; background: var(--lit); }
+
+/* ---- Reduced motion: same content, nothing travels ---- */
+
+@media (prefers-reduced-motion: reduce) {
+  .course-boat,
+  .course-rail-cover,
+  .course-aside { display: none; }
+  .course { grid-template-columns: minmax(0, 1fr); }
+  .course-stop .course-buoy { background: currentColor; }
+  .course-stop[data-state="ahead"] .course-year { color: var(--ink); }
+  .hub *,
+  .hub *::before,
+  .hub *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

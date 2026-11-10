@@ -8,7 +8,7 @@ const Footer = () => {
         <section
             className="relative w-full bg-cover bg-center"
         >
-            <div className="bg-black/80 flex flex-row justify-between items-center px-10 py-8 text-white">
+            <div className="bg-black/80 flex flex-row flex-wrap gap-6 justify-between items-center px-10 py-8 text-white">
                 {/* Address */}
                 <div className="text-sm">
                     <p className="font-bold text-base mb-1">Address</p>
